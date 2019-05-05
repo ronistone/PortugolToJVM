@@ -1,0 +1,1616 @@
+State 0:
+prog' -> . prog [ # ]
+-- On PROGRAMA shift to state 1
+-- On prog shift to state 104
+
+State 1:
+prog -> PROGRAMA . LITSTRING declaracao list(decFunctions) INI list(comando) FPROGRAMA EOF [ # ]
+-- On LITSTRING shift to state 2
+
+State 2:
+prog -> PROGRAMA LITSTRING . declaracao list(decFunctions) INI list(comando) FPROGRAMA EOF [ # ]
+-- On VAR shift to state 3
+-- On declaracao shift to state 16
+-- On INI reduce production declaracao -> 
+-- On FUNCTION reduce production declaracao -> 
+
+State 3:
+declaracao -> VAR . list(variaveis) [ INI FUNCTION FPAR ]
+-- On ID shift to state 4
+-- On variaveis shift to state 7
+-- On separated_nonempty_list(VIRG,ID) shift to state 8
+-- On list(variaveis) shift to state 15
+-- On INI reduce production list(variaveis) -> 
+-- On FUNCTION reduce production list(variaveis) -> 
+-- On FPAR reduce production list(variaveis) -> 
+
+State 4:
+separated_nonempty_list(VIRG,ID) -> ID . [ DEF ]
+separated_nonempty_list(VIRG,ID) -> ID . VIRG separated_nonempty_list(VIRG,ID) [ DEF ]
+-- On VIRG shift to state 5
+-- On DEF reduce production separated_nonempty_list(VIRG,ID) -> ID 
+
+State 5:
+separated_nonempty_list(VIRG,ID) -> ID VIRG . separated_nonempty_list(VIRG,ID) [ DEF ]
+-- On ID shift to state 4
+-- On separated_nonempty_list(VIRG,ID) shift to state 6
+
+State 6:
+separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) . [ DEF ]
+-- On DEF reduce production separated_nonempty_list(VIRG,ID) -> ID VIRG separated_nonempty_list(VIRG,ID) 
+
+State 7:
+list(variaveis) -> variaveis . list(variaveis) [ INI FUNCTION FPAR ]
+-- On ID shift to state 4
+-- On variaveis shift to state 7
+-- On separated_nonempty_list(VIRG,ID) shift to state 8
+-- On list(variaveis) shift to state 14
+-- On INI reduce production list(variaveis) -> 
+-- On FUNCTION reduce production list(variaveis) -> 
+-- On FPAR reduce production list(variaveis) -> 
+
+State 8:
+variaveis -> separated_nonempty_list(VIRG,ID) . DEF tipo [ INI ID FUNCTION FPAR ]
+-- On DEF shift to state 9
+
+State 9:
+variaveis -> separated_nonempty_list(VIRG,ID) DEF . tipo [ INI ID FUNCTION FPAR ]
+-- On REAL shift to state 10
+-- On INTEGER shift to state 11
+-- On CARACTER shift to state 12
+-- On tipo shift to state 13
+
+State 10:
+tipo -> REAL . [ INI ID FUNCTION FPAR ]
+-- On INI reduce production tipo -> REAL 
+-- On ID reduce production tipo -> REAL 
+-- On FUNCTION reduce production tipo -> REAL 
+-- On FPAR reduce production tipo -> REAL 
+
+State 11:
+tipo -> INTEGER . [ INI ID FUNCTION FPAR ]
+-- On INI reduce production tipo -> INTEGER 
+-- On ID reduce production tipo -> INTEGER 
+-- On FUNCTION reduce production tipo -> INTEGER 
+-- On FPAR reduce production tipo -> INTEGER 
+
+State 12:
+tipo -> CARACTER . [ INI ID FUNCTION FPAR ]
+-- On INI reduce production tipo -> CARACTER 
+-- On ID reduce production tipo -> CARACTER 
+-- On FUNCTION reduce production tipo -> CARACTER 
+-- On FPAR reduce production tipo -> CARACTER 
+
+State 13:
+variaveis -> separated_nonempty_list(VIRG,ID) DEF tipo . [ INI ID FUNCTION FPAR ]
+-- On INI reduce production variaveis -> separated_nonempty_list(VIRG,ID) DEF tipo 
+-- On ID reduce production variaveis -> separated_nonempty_list(VIRG,ID) DEF tipo 
+-- On FUNCTION reduce production variaveis -> separated_nonempty_list(VIRG,ID) DEF tipo 
+-- On FPAR reduce production variaveis -> separated_nonempty_list(VIRG,ID) DEF tipo 
+
+State 14:
+list(variaveis) -> variaveis list(variaveis) . [ INI FUNCTION FPAR ]
+-- On INI reduce production list(variaveis) -> variaveis list(variaveis) 
+-- On FUNCTION reduce production list(variaveis) -> variaveis list(variaveis) 
+-- On FPAR reduce production list(variaveis) -> variaveis list(variaveis) 
+
+State 15:
+declaracao -> VAR list(variaveis) . [ INI FUNCTION FPAR ]
+-- On INI reduce production declaracao -> VAR list(variaveis) 
+-- On FUNCTION reduce production declaracao -> VAR list(variaveis) 
+-- On FPAR reduce production declaracao -> VAR list(variaveis) 
+
+State 16:
+prog -> PROGRAMA LITSTRING declaracao . list(decFunctions) INI list(comando) FPROGRAMA EOF [ # ]
+-- On FUNCTION shift to state 17
+-- On list(decFunctions) shift to state 97
+-- On decFunctions shift to state 102
+-- On INI reduce production list(decFunctions) -> 
+
+State 17:
+decFunctions -> FUNCTION . ID APAR declaracao FPAR declaracao INI list(comando) FFUNCTION [ INI FUNCTION ]
+-- On ID shift to state 18
+
+State 18:
+decFunctions -> FUNCTION ID . APAR declaracao FPAR declaracao INI list(comando) FFUNCTION [ INI FUNCTION ]
+-- On APAR shift to state 19
+
+State 19:
+decFunctions -> FUNCTION ID APAR . declaracao FPAR declaracao INI list(comando) FFUNCTION [ INI FUNCTION ]
+-- On VAR shift to state 3
+-- On declaracao shift to state 20
+-- On FPAR reduce production declaracao -> 
+
+State 20:
+decFunctions -> FUNCTION ID APAR declaracao . FPAR declaracao INI list(comando) FFUNCTION [ INI FUNCTION ]
+-- On FPAR shift to state 21
+
+State 21:
+decFunctions -> FUNCTION ID APAR declaracao FPAR . declaracao INI list(comando) FFUNCTION [ INI FUNCTION ]
+-- On VAR shift to state 3
+-- On declaracao shift to state 22
+-- On INI reduce production declaracao -> 
+
+State 22:
+decFunctions -> FUNCTION ID APAR declaracao FPAR declaracao . INI list(comando) FFUNCTION [ INI FUNCTION ]
+-- On INI shift to state 23
+
+State 23:
+decFunctions -> FUNCTION ID APAR declaracao FPAR declaracao INI . list(comando) FFUNCTION [ INI FUNCTION ]
+-- On WHILE shift to state 24
+-- On SAIDA shift to state 62
+-- On IF shift to state 69
+-- On ID shift to state 27
+-- On ENTRADA shift to state 72
+-- On variavel shift to state 76
+-- On list(comando) shift to state 93
+-- On comando_se shift to state 82
+-- On comando_saida shift to state 83
+-- On comando_entrada shift to state 84
+-- On comando_enquanto shift to state 85
+-- On comando_atribuicao shift to state 86
+-- On comando shift to state 95
+-- On FFUNCTION reduce production list(comando) -> 
+
+State 24:
+comando_enquanto -> WHILE . expressao DO nonempty_list(comando) FWHILE [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 60
+
+State 25:
+expressao -> LITSTRING . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On WHILE reduce production expressao -> LITSTRING 
+-- On VIRG reduce production expressao -> LITSTRING 
+-- On SAIDA reduce production expressao -> LITSTRING 
+-- On RESTO reduce production expressao -> LITSTRING 
+-- On POTEN reduce production expressao -> LITSTRING 
+-- On OR reduce production expressao -> LITSTRING 
+-- On MULTI reduce production expressao -> LITSTRING 
+-- On MENOS reduce production expressao -> LITSTRING 
+-- On MAIS reduce production expressao -> LITSTRING 
+-- On LTE reduce production expressao -> LITSTRING 
+-- On LT reduce production expressao -> LITSTRING 
+-- On IF reduce production expressao -> LITSTRING 
+-- On ID reduce production expressao -> LITSTRING 
+-- On GTE reduce production expressao -> LITSTRING 
+-- On GT reduce production expressao -> LITSTRING 
+-- On FWHILE reduce production expressao -> LITSTRING 
+-- On FPROGRAMA reduce production expressao -> LITSTRING 
+-- On FPAR reduce production expressao -> LITSTRING 
+-- On FIF reduce production expressao -> LITSTRING 
+-- On FFUNCTION reduce production expressao -> LITSTRING 
+-- On EQUALS reduce production expressao -> LITSTRING 
+-- On ENTRADA reduce production expressao -> LITSTRING 
+-- On ENTAO reduce production expressao -> LITSTRING 
+-- On ELSE reduce production expressao -> LITSTRING 
+-- On DO reduce production expressao -> LITSTRING 
+-- On DIV reduce production expressao -> LITSTRING 
+-- On DIFER reduce production expressao -> LITSTRING 
+-- On AND reduce production expressao -> LITSTRING 
+
+State 26:
+expressao -> LITINT . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On WHILE reduce production expressao -> LITINT 
+-- On VIRG reduce production expressao -> LITINT 
+-- On SAIDA reduce production expressao -> LITINT 
+-- On RESTO reduce production expressao -> LITINT 
+-- On POTEN reduce production expressao -> LITINT 
+-- On OR reduce production expressao -> LITINT 
+-- On MULTI reduce production expressao -> LITINT 
+-- On MENOS reduce production expressao -> LITINT 
+-- On MAIS reduce production expressao -> LITINT 
+-- On LTE reduce production expressao -> LITINT 
+-- On LT reduce production expressao -> LITINT 
+-- On IF reduce production expressao -> LITINT 
+-- On ID reduce production expressao -> LITINT 
+-- On GTE reduce production expressao -> LITINT 
+-- On GT reduce production expressao -> LITINT 
+-- On FWHILE reduce production expressao -> LITINT 
+-- On FPROGRAMA reduce production expressao -> LITINT 
+-- On FPAR reduce production expressao -> LITINT 
+-- On FIF reduce production expressao -> LITINT 
+-- On FFUNCTION reduce production expressao -> LITINT 
+-- On EQUALS reduce production expressao -> LITINT 
+-- On ENTRADA reduce production expressao -> LITINT 
+-- On ENTAO reduce production expressao -> LITINT 
+-- On ELSE reduce production expressao -> LITINT 
+-- On DO reduce production expressao -> LITINT 
+-- On DIV reduce production expressao -> LITINT 
+-- On DIFER reduce production expressao -> LITINT 
+-- On AND reduce production expressao -> LITINT 
+
+State 27:
+variavel -> ID . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER ATRIB AND ]
+-- On WHILE reduce production variavel -> ID 
+-- On VIRG reduce production variavel -> ID 
+-- On SAIDA reduce production variavel -> ID 
+-- On RESTO reduce production variavel -> ID 
+-- On POTEN reduce production variavel -> ID 
+-- On OR reduce production variavel -> ID 
+-- On MULTI reduce production variavel -> ID 
+-- On MENOS reduce production variavel -> ID 
+-- On MAIS reduce production variavel -> ID 
+-- On LTE reduce production variavel -> ID 
+-- On LT reduce production variavel -> ID 
+-- On IF reduce production variavel -> ID 
+-- On ID reduce production variavel -> ID 
+-- On GTE reduce production variavel -> ID 
+-- On GT reduce production variavel -> ID 
+-- On FWHILE reduce production variavel -> ID 
+-- On FPROGRAMA reduce production variavel -> ID 
+-- On FPAR reduce production variavel -> ID 
+-- On FIF reduce production variavel -> ID 
+-- On FFUNCTION reduce production variavel -> ID 
+-- On EQUALS reduce production variavel -> ID 
+-- On ENTRADA reduce production variavel -> ID 
+-- On ENTAO reduce production variavel -> ID 
+-- On ELSE reduce production variavel -> ID 
+-- On DO reduce production variavel -> ID 
+-- On DIV reduce production variavel -> ID 
+-- On DIFER reduce production variavel -> ID 
+-- On ATRIB reduce production variavel -> ID 
+-- On AND reduce production variavel -> ID 
+
+State 28:
+expressao -> APAR . expressao FPAR [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 30
+
+State 29:
+expressao -> variavel . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On WHILE reduce production expressao -> variavel 
+-- On VIRG reduce production expressao -> variavel 
+-- On SAIDA reduce production expressao -> variavel 
+-- On RESTO reduce production expressao -> variavel 
+-- On POTEN reduce production expressao -> variavel 
+-- On OR reduce production expressao -> variavel 
+-- On MULTI reduce production expressao -> variavel 
+-- On MENOS reduce production expressao -> variavel 
+-- On MAIS reduce production expressao -> variavel 
+-- On LTE reduce production expressao -> variavel 
+-- On LT reduce production expressao -> variavel 
+-- On IF reduce production expressao -> variavel 
+-- On ID reduce production expressao -> variavel 
+-- On GTE reduce production expressao -> variavel 
+-- On GT reduce production expressao -> variavel 
+-- On FWHILE reduce production expressao -> variavel 
+-- On FPROGRAMA reduce production expressao -> variavel 
+-- On FPAR reduce production expressao -> variavel 
+-- On FIF reduce production expressao -> variavel 
+-- On FFUNCTION reduce production expressao -> variavel 
+-- On EQUALS reduce production expressao -> variavel 
+-- On ENTRADA reduce production expressao -> variavel 
+-- On ENTAO reduce production expressao -> variavel 
+-- On ELSE reduce production expressao -> variavel 
+-- On DO reduce production expressao -> variavel 
+-- On DIV reduce production expressao -> variavel 
+-- On DIFER reduce production expressao -> variavel 
+-- On AND reduce production expressao -> variavel 
+
+State 30:
+expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . LT expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . GT expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . AND expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . OR expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> APAR expressao . FPAR [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On FPAR shift to state 57
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
+
+State 31:
+expressao -> expressao RESTO . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 32
+
+State 32:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao RESTO expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On MULTI shift to state 33
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao RESTO expressao 
+-- On VIRG reduce production expressao -> expressao RESTO expressao 
+-- On SAIDA reduce production expressao -> expressao RESTO expressao 
+-- On RESTO reduce production expressao -> expressao RESTO expressao 
+-- On POTEN reduce production expressao -> expressao RESTO expressao 
+-- On OR reduce production expressao -> expressao RESTO expressao 
+-- On MENOS reduce production expressao -> expressao RESTO expressao 
+-- On MAIS reduce production expressao -> expressao RESTO expressao 
+-- On LTE reduce production expressao -> expressao RESTO expressao 
+-- On LT reduce production expressao -> expressao RESTO expressao 
+-- On IF reduce production expressao -> expressao RESTO expressao 
+-- On ID reduce production expressao -> expressao RESTO expressao 
+-- On GTE reduce production expressao -> expressao RESTO expressao 
+-- On GT reduce production expressao -> expressao RESTO expressao 
+-- On FWHILE reduce production expressao -> expressao RESTO expressao 
+-- On FPROGRAMA reduce production expressao -> expressao RESTO expressao 
+-- On FPAR reduce production expressao -> expressao RESTO expressao 
+-- On FIF reduce production expressao -> expressao RESTO expressao 
+-- On FFUNCTION reduce production expressao -> expressao RESTO expressao 
+-- On EQUALS reduce production expressao -> expressao RESTO expressao 
+-- On ENTRADA reduce production expressao -> expressao RESTO expressao 
+-- On ENTAO reduce production expressao -> expressao RESTO expressao 
+-- On ELSE reduce production expressao -> expressao RESTO expressao 
+-- On DO reduce production expressao -> expressao RESTO expressao 
+-- On DIFER reduce production expressao -> expressao RESTO expressao 
+-- On AND reduce production expressao -> expressao RESTO expressao 
+
+State 33:
+expressao -> expressao MULTI . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 34
+
+State 34:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao MULTI expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On WHILE reduce production expressao -> expressao MULTI expressao 
+-- On VIRG reduce production expressao -> expressao MULTI expressao 
+-- On SAIDA reduce production expressao -> expressao MULTI expressao 
+-- On RESTO reduce production expressao -> expressao MULTI expressao 
+-- On POTEN reduce production expressao -> expressao MULTI expressao 
+-- On OR reduce production expressao -> expressao MULTI expressao 
+-- On MULTI reduce production expressao -> expressao MULTI expressao 
+-- On MENOS reduce production expressao -> expressao MULTI expressao 
+-- On MAIS reduce production expressao -> expressao MULTI expressao 
+-- On LTE reduce production expressao -> expressao MULTI expressao 
+-- On LT reduce production expressao -> expressao MULTI expressao 
+-- On IF reduce production expressao -> expressao MULTI expressao 
+-- On ID reduce production expressao -> expressao MULTI expressao 
+-- On GTE reduce production expressao -> expressao MULTI expressao 
+-- On GT reduce production expressao -> expressao MULTI expressao 
+-- On FWHILE reduce production expressao -> expressao MULTI expressao 
+-- On FPROGRAMA reduce production expressao -> expressao MULTI expressao 
+-- On FPAR reduce production expressao -> expressao MULTI expressao 
+-- On FIF reduce production expressao -> expressao MULTI expressao 
+-- On FFUNCTION reduce production expressao -> expressao MULTI expressao 
+-- On EQUALS reduce production expressao -> expressao MULTI expressao 
+-- On ENTRADA reduce production expressao -> expressao MULTI expressao 
+-- On ENTAO reduce production expressao -> expressao MULTI expressao 
+-- On ELSE reduce production expressao -> expressao MULTI expressao 
+-- On DO reduce production expressao -> expressao MULTI expressao 
+-- On DIV reduce production expressao -> expressao MULTI expressao 
+-- On DIFER reduce production expressao -> expressao MULTI expressao 
+-- On AND reduce production expressao -> expressao MULTI expressao 
+
+State 35:
+expressao -> expressao DIV . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 36
+
+State 36:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao DIV expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On WHILE reduce production expressao -> expressao DIV expressao 
+-- On VIRG reduce production expressao -> expressao DIV expressao 
+-- On SAIDA reduce production expressao -> expressao DIV expressao 
+-- On RESTO reduce production expressao -> expressao DIV expressao 
+-- On POTEN reduce production expressao -> expressao DIV expressao 
+-- On OR reduce production expressao -> expressao DIV expressao 
+-- On MULTI reduce production expressao -> expressao DIV expressao 
+-- On MENOS reduce production expressao -> expressao DIV expressao 
+-- On MAIS reduce production expressao -> expressao DIV expressao 
+-- On LTE reduce production expressao -> expressao DIV expressao 
+-- On LT reduce production expressao -> expressao DIV expressao 
+-- On IF reduce production expressao -> expressao DIV expressao 
+-- On ID reduce production expressao -> expressao DIV expressao 
+-- On GTE reduce production expressao -> expressao DIV expressao 
+-- On GT reduce production expressao -> expressao DIV expressao 
+-- On FWHILE reduce production expressao -> expressao DIV expressao 
+-- On FPROGRAMA reduce production expressao -> expressao DIV expressao 
+-- On FPAR reduce production expressao -> expressao DIV expressao 
+-- On FIF reduce production expressao -> expressao DIV expressao 
+-- On FFUNCTION reduce production expressao -> expressao DIV expressao 
+-- On EQUALS reduce production expressao -> expressao DIV expressao 
+-- On ENTRADA reduce production expressao -> expressao DIV expressao 
+-- On ENTAO reduce production expressao -> expressao DIV expressao 
+-- On ELSE reduce production expressao -> expressao DIV expressao 
+-- On DO reduce production expressao -> expressao DIV expressao 
+-- On DIV reduce production expressao -> expressao DIV expressao 
+-- On DIFER reduce production expressao -> expressao DIV expressao 
+-- On AND reduce production expressao -> expressao DIV expressao 
+
+State 37:
+expressao -> expressao POTEN . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 38
+
+State 38:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao POTEN expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao POTEN expressao 
+-- On VIRG reduce production expressao -> expressao POTEN expressao 
+-- On SAIDA reduce production expressao -> expressao POTEN expressao 
+-- On OR reduce production expressao -> expressao POTEN expressao 
+-- On LTE reduce production expressao -> expressao POTEN expressao 
+-- On LT reduce production expressao -> expressao POTEN expressao 
+-- On IF reduce production expressao -> expressao POTEN expressao 
+-- On ID reduce production expressao -> expressao POTEN expressao 
+-- On GTE reduce production expressao -> expressao POTEN expressao 
+-- On GT reduce production expressao -> expressao POTEN expressao 
+-- On FWHILE reduce production expressao -> expressao POTEN expressao 
+-- On FPROGRAMA reduce production expressao -> expressao POTEN expressao 
+-- On FPAR reduce production expressao -> expressao POTEN expressao 
+-- On FIF reduce production expressao -> expressao POTEN expressao 
+-- On FFUNCTION reduce production expressao -> expressao POTEN expressao 
+-- On EQUALS reduce production expressao -> expressao POTEN expressao 
+-- On ENTRADA reduce production expressao -> expressao POTEN expressao 
+-- On ENTAO reduce production expressao -> expressao POTEN expressao 
+-- On ELSE reduce production expressao -> expressao POTEN expressao 
+-- On DO reduce production expressao -> expressao POTEN expressao 
+-- On DIFER reduce production expressao -> expressao POTEN expressao 
+-- On AND reduce production expressao -> expressao POTEN expressao 
+
+State 39:
+expressao -> expressao MENOS . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 40
+
+State 40:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao MENOS expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On MULTI shift to state 33
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao MENOS expressao 
+-- On VIRG reduce production expressao -> expressao MENOS expressao 
+-- On SAIDA reduce production expressao -> expressao MENOS expressao 
+-- On RESTO reduce production expressao -> expressao MENOS expressao 
+-- On POTEN reduce production expressao -> expressao MENOS expressao 
+-- On OR reduce production expressao -> expressao MENOS expressao 
+-- On MENOS reduce production expressao -> expressao MENOS expressao 
+-- On MAIS reduce production expressao -> expressao MENOS expressao 
+-- On LTE reduce production expressao -> expressao MENOS expressao 
+-- On LT reduce production expressao -> expressao MENOS expressao 
+-- On IF reduce production expressao -> expressao MENOS expressao 
+-- On ID reduce production expressao -> expressao MENOS expressao 
+-- On GTE reduce production expressao -> expressao MENOS expressao 
+-- On GT reduce production expressao -> expressao MENOS expressao 
+-- On FWHILE reduce production expressao -> expressao MENOS expressao 
+-- On FPROGRAMA reduce production expressao -> expressao MENOS expressao 
+-- On FPAR reduce production expressao -> expressao MENOS expressao 
+-- On FIF reduce production expressao -> expressao MENOS expressao 
+-- On FFUNCTION reduce production expressao -> expressao MENOS expressao 
+-- On EQUALS reduce production expressao -> expressao MENOS expressao 
+-- On ENTRADA reduce production expressao -> expressao MENOS expressao 
+-- On ENTAO reduce production expressao -> expressao MENOS expressao 
+-- On ELSE reduce production expressao -> expressao MENOS expressao 
+-- On DO reduce production expressao -> expressao MENOS expressao 
+-- On DIFER reduce production expressao -> expressao MENOS expressao 
+-- On AND reduce production expressao -> expressao MENOS expressao 
+
+State 41:
+expressao -> expressao MAIS . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 42
+
+State 42:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao MAIS expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On MULTI shift to state 33
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao MAIS expressao 
+-- On VIRG reduce production expressao -> expressao MAIS expressao 
+-- On SAIDA reduce production expressao -> expressao MAIS expressao 
+-- On RESTO reduce production expressao -> expressao MAIS expressao 
+-- On POTEN reduce production expressao -> expressao MAIS expressao 
+-- On OR reduce production expressao -> expressao MAIS expressao 
+-- On MENOS reduce production expressao -> expressao MAIS expressao 
+-- On MAIS reduce production expressao -> expressao MAIS expressao 
+-- On LTE reduce production expressao -> expressao MAIS expressao 
+-- On LT reduce production expressao -> expressao MAIS expressao 
+-- On IF reduce production expressao -> expressao MAIS expressao 
+-- On ID reduce production expressao -> expressao MAIS expressao 
+-- On GTE reduce production expressao -> expressao MAIS expressao 
+-- On GT reduce production expressao -> expressao MAIS expressao 
+-- On FWHILE reduce production expressao -> expressao MAIS expressao 
+-- On FPROGRAMA reduce production expressao -> expressao MAIS expressao 
+-- On FPAR reduce production expressao -> expressao MAIS expressao 
+-- On FIF reduce production expressao -> expressao MAIS expressao 
+-- On FFUNCTION reduce production expressao -> expressao MAIS expressao 
+-- On EQUALS reduce production expressao -> expressao MAIS expressao 
+-- On ENTRADA reduce production expressao -> expressao MAIS expressao 
+-- On ENTAO reduce production expressao -> expressao MAIS expressao 
+-- On ELSE reduce production expressao -> expressao MAIS expressao 
+-- On DO reduce production expressao -> expressao MAIS expressao 
+-- On DIFER reduce production expressao -> expressao MAIS expressao 
+-- On AND reduce production expressao -> expressao MAIS expressao 
+
+State 43:
+expressao -> expressao OR . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 44
+
+State 44:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao OR expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On WHILE reduce production expressao -> expressao OR expressao 
+-- On VIRG reduce production expressao -> expressao OR expressao 
+-- On SAIDA reduce production expressao -> expressao OR expressao 
+-- On OR reduce production expressao -> expressao OR expressao 
+-- On IF reduce production expressao -> expressao OR expressao 
+-- On ID reduce production expressao -> expressao OR expressao 
+-- On FWHILE reduce production expressao -> expressao OR expressao 
+-- On FPROGRAMA reduce production expressao -> expressao OR expressao 
+-- On FPAR reduce production expressao -> expressao OR expressao 
+-- On FIF reduce production expressao -> expressao OR expressao 
+-- On FFUNCTION reduce production expressao -> expressao OR expressao 
+-- On ENTRADA reduce production expressao -> expressao OR expressao 
+-- On ENTAO reduce production expressao -> expressao OR expressao 
+-- On ELSE reduce production expressao -> expressao OR expressao 
+-- On DO reduce production expressao -> expressao OR expressao 
+-- On AND reduce production expressao -> expressao OR expressao 
+
+State 45:
+expressao -> expressao LTE . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 46
+
+State 46:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao LTE expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao LTE expressao 
+-- On VIRG reduce production expressao -> expressao LTE expressao 
+-- On SAIDA reduce production expressao -> expressao LTE expressao 
+-- On OR reduce production expressao -> expressao LTE expressao 
+-- On LTE reduce production expressao -> expressao LTE expressao 
+-- On LT reduce production expressao -> expressao LTE expressao 
+-- On IF reduce production expressao -> expressao LTE expressao 
+-- On ID reduce production expressao -> expressao LTE expressao 
+-- On GTE reduce production expressao -> expressao LTE expressao 
+-- On GT reduce production expressao -> expressao LTE expressao 
+-- On FWHILE reduce production expressao -> expressao LTE expressao 
+-- On FPROGRAMA reduce production expressao -> expressao LTE expressao 
+-- On FPAR reduce production expressao -> expressao LTE expressao 
+-- On FIF reduce production expressao -> expressao LTE expressao 
+-- On FFUNCTION reduce production expressao -> expressao LTE expressao 
+-- On EQUALS reduce production expressao -> expressao LTE expressao 
+-- On ENTRADA reduce production expressao -> expressao LTE expressao 
+-- On ENTAO reduce production expressao -> expressao LTE expressao 
+-- On ELSE reduce production expressao -> expressao LTE expressao 
+-- On DO reduce production expressao -> expressao LTE expressao 
+-- On DIFER reduce production expressao -> expressao LTE expressao 
+-- On AND reduce production expressao -> expressao LTE expressao 
+
+State 47:
+expressao -> expressao LT . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 48
+
+State 48:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao LT expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao LT expressao 
+-- On VIRG reduce production expressao -> expressao LT expressao 
+-- On SAIDA reduce production expressao -> expressao LT expressao 
+-- On OR reduce production expressao -> expressao LT expressao 
+-- On LTE reduce production expressao -> expressao LT expressao 
+-- On LT reduce production expressao -> expressao LT expressao 
+-- On IF reduce production expressao -> expressao LT expressao 
+-- On ID reduce production expressao -> expressao LT expressao 
+-- On GTE reduce production expressao -> expressao LT expressao 
+-- On GT reduce production expressao -> expressao LT expressao 
+-- On FWHILE reduce production expressao -> expressao LT expressao 
+-- On FPROGRAMA reduce production expressao -> expressao LT expressao 
+-- On FPAR reduce production expressao -> expressao LT expressao 
+-- On FIF reduce production expressao -> expressao LT expressao 
+-- On FFUNCTION reduce production expressao -> expressao LT expressao 
+-- On EQUALS reduce production expressao -> expressao LT expressao 
+-- On ENTRADA reduce production expressao -> expressao LT expressao 
+-- On ENTAO reduce production expressao -> expressao LT expressao 
+-- On ELSE reduce production expressao -> expressao LT expressao 
+-- On DO reduce production expressao -> expressao LT expressao 
+-- On DIFER reduce production expressao -> expressao LT expressao 
+-- On AND reduce production expressao -> expressao LT expressao 
+
+State 49:
+expressao -> expressao GTE . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 50
+
+State 50:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao GTE expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao GTE expressao 
+-- On VIRG reduce production expressao -> expressao GTE expressao 
+-- On SAIDA reduce production expressao -> expressao GTE expressao 
+-- On OR reduce production expressao -> expressao GTE expressao 
+-- On LTE reduce production expressao -> expressao GTE expressao 
+-- On LT reduce production expressao -> expressao GTE expressao 
+-- On IF reduce production expressao -> expressao GTE expressao 
+-- On ID reduce production expressao -> expressao GTE expressao 
+-- On GTE reduce production expressao -> expressao GTE expressao 
+-- On GT reduce production expressao -> expressao GTE expressao 
+-- On FWHILE reduce production expressao -> expressao GTE expressao 
+-- On FPROGRAMA reduce production expressao -> expressao GTE expressao 
+-- On FPAR reduce production expressao -> expressao GTE expressao 
+-- On FIF reduce production expressao -> expressao GTE expressao 
+-- On FFUNCTION reduce production expressao -> expressao GTE expressao 
+-- On EQUALS reduce production expressao -> expressao GTE expressao 
+-- On ENTRADA reduce production expressao -> expressao GTE expressao 
+-- On ENTAO reduce production expressao -> expressao GTE expressao 
+-- On ELSE reduce production expressao -> expressao GTE expressao 
+-- On DO reduce production expressao -> expressao GTE expressao 
+-- On DIFER reduce production expressao -> expressao GTE expressao 
+-- On AND reduce production expressao -> expressao GTE expressao 
+
+State 51:
+expressao -> expressao GT . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 52
+
+State 52:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao GT expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao GT expressao 
+-- On VIRG reduce production expressao -> expressao GT expressao 
+-- On SAIDA reduce production expressao -> expressao GT expressao 
+-- On OR reduce production expressao -> expressao GT expressao 
+-- On LTE reduce production expressao -> expressao GT expressao 
+-- On LT reduce production expressao -> expressao GT expressao 
+-- On IF reduce production expressao -> expressao GT expressao 
+-- On ID reduce production expressao -> expressao GT expressao 
+-- On GTE reduce production expressao -> expressao GT expressao 
+-- On GT reduce production expressao -> expressao GT expressao 
+-- On FWHILE reduce production expressao -> expressao GT expressao 
+-- On FPROGRAMA reduce production expressao -> expressao GT expressao 
+-- On FPAR reduce production expressao -> expressao GT expressao 
+-- On FIF reduce production expressao -> expressao GT expressao 
+-- On FFUNCTION reduce production expressao -> expressao GT expressao 
+-- On EQUALS reduce production expressao -> expressao GT expressao 
+-- On ENTRADA reduce production expressao -> expressao GT expressao 
+-- On ENTAO reduce production expressao -> expressao GT expressao 
+-- On ELSE reduce production expressao -> expressao GT expressao 
+-- On DO reduce production expressao -> expressao GT expressao 
+-- On DIFER reduce production expressao -> expressao GT expressao 
+-- On AND reduce production expressao -> expressao GT expressao 
+
+State 53:
+expressao -> expressao EQUALS . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 54
+
+State 54:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao EQUALS expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao EQUALS expressao 
+-- On VIRG reduce production expressao -> expressao EQUALS expressao 
+-- On SAIDA reduce production expressao -> expressao EQUALS expressao 
+-- On OR reduce production expressao -> expressao EQUALS expressao 
+-- On IF reduce production expressao -> expressao EQUALS expressao 
+-- On ID reduce production expressao -> expressao EQUALS expressao 
+-- On FWHILE reduce production expressao -> expressao EQUALS expressao 
+-- On FPROGRAMA reduce production expressao -> expressao EQUALS expressao 
+-- On FPAR reduce production expressao -> expressao EQUALS expressao 
+-- On FIF reduce production expressao -> expressao EQUALS expressao 
+-- On FFUNCTION reduce production expressao -> expressao EQUALS expressao 
+-- On EQUALS reduce production expressao -> expressao EQUALS expressao 
+-- On ENTRADA reduce production expressao -> expressao EQUALS expressao 
+-- On ENTAO reduce production expressao -> expressao EQUALS expressao 
+-- On ELSE reduce production expressao -> expressao EQUALS expressao 
+-- On DO reduce production expressao -> expressao EQUALS expressao 
+-- On DIFER reduce production expressao -> expressao EQUALS expressao 
+-- On AND reduce production expressao -> expressao EQUALS expressao 
+
+State 55:
+expressao -> expressao DIFER . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 56
+
+State 56:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao DIFER expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On DIV shift to state 35
+-- On WHILE reduce production expressao -> expressao DIFER expressao 
+-- On VIRG reduce production expressao -> expressao DIFER expressao 
+-- On SAIDA reduce production expressao -> expressao DIFER expressao 
+-- On OR reduce production expressao -> expressao DIFER expressao 
+-- On IF reduce production expressao -> expressao DIFER expressao 
+-- On ID reduce production expressao -> expressao DIFER expressao 
+-- On FWHILE reduce production expressao -> expressao DIFER expressao 
+-- On FPROGRAMA reduce production expressao -> expressao DIFER expressao 
+-- On FPAR reduce production expressao -> expressao DIFER expressao 
+-- On FIF reduce production expressao -> expressao DIFER expressao 
+-- On FFUNCTION reduce production expressao -> expressao DIFER expressao 
+-- On EQUALS reduce production expressao -> expressao DIFER expressao 
+-- On ENTRADA reduce production expressao -> expressao DIFER expressao 
+-- On ENTAO reduce production expressao -> expressao DIFER expressao 
+-- On ELSE reduce production expressao -> expressao DIFER expressao 
+-- On DO reduce production expressao -> expressao DIFER expressao 
+-- On DIFER reduce production expressao -> expressao DIFER expressao 
+-- On AND reduce production expressao -> expressao DIFER expressao 
+
+State 57:
+expressao -> APAR expressao FPAR . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On WHILE reduce production expressao -> APAR expressao FPAR 
+-- On VIRG reduce production expressao -> APAR expressao FPAR 
+-- On SAIDA reduce production expressao -> APAR expressao FPAR 
+-- On RESTO reduce production expressao -> APAR expressao FPAR 
+-- On POTEN reduce production expressao -> APAR expressao FPAR 
+-- On OR reduce production expressao -> APAR expressao FPAR 
+-- On MULTI reduce production expressao -> APAR expressao FPAR 
+-- On MENOS reduce production expressao -> APAR expressao FPAR 
+-- On MAIS reduce production expressao -> APAR expressao FPAR 
+-- On LTE reduce production expressao -> APAR expressao FPAR 
+-- On LT reduce production expressao -> APAR expressao FPAR 
+-- On IF reduce production expressao -> APAR expressao FPAR 
+-- On ID reduce production expressao -> APAR expressao FPAR 
+-- On GTE reduce production expressao -> APAR expressao FPAR 
+-- On GT reduce production expressao -> APAR expressao FPAR 
+-- On FWHILE reduce production expressao -> APAR expressao FPAR 
+-- On FPROGRAMA reduce production expressao -> APAR expressao FPAR 
+-- On FPAR reduce production expressao -> APAR expressao FPAR 
+-- On FIF reduce production expressao -> APAR expressao FPAR 
+-- On FFUNCTION reduce production expressao -> APAR expressao FPAR 
+-- On EQUALS reduce production expressao -> APAR expressao FPAR 
+-- On ENTRADA reduce production expressao -> APAR expressao FPAR 
+-- On ENTAO reduce production expressao -> APAR expressao FPAR 
+-- On ELSE reduce production expressao -> APAR expressao FPAR 
+-- On DO reduce production expressao -> APAR expressao FPAR 
+-- On DIV reduce production expressao -> APAR expressao FPAR 
+-- On DIFER reduce production expressao -> APAR expressao FPAR 
+-- On AND reduce production expressao -> APAR expressao FPAR 
+
+State 58:
+expressao -> expressao AND . expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 59
+
+State 59:
+expressao -> expressao . MAIS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao AND expressao . [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE VIRG SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FPAR FIF FFUNCTION EQUALS ENTRADA ENTAO ELSE DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On WHILE reduce production expressao -> expressao AND expressao 
+-- On VIRG reduce production expressao -> expressao AND expressao 
+-- On SAIDA reduce production expressao -> expressao AND expressao 
+-- On OR reduce production expressao -> expressao AND expressao 
+-- On IF reduce production expressao -> expressao AND expressao 
+-- On ID reduce production expressao -> expressao AND expressao 
+-- On FWHILE reduce production expressao -> expressao AND expressao 
+-- On FPROGRAMA reduce production expressao -> expressao AND expressao 
+-- On FPAR reduce production expressao -> expressao AND expressao 
+-- On FIF reduce production expressao -> expressao AND expressao 
+-- On FFUNCTION reduce production expressao -> expressao AND expressao 
+-- On ENTRADA reduce production expressao -> expressao AND expressao 
+-- On ENTAO reduce production expressao -> expressao AND expressao 
+-- On ELSE reduce production expressao -> expressao AND expressao 
+-- On DO reduce production expressao -> expressao AND expressao 
+-- On AND reduce production expressao -> expressao AND expressao 
+
+State 60:
+comando_enquanto -> WHILE expressao . DO nonempty_list(comando) FWHILE [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DO shift to state 61
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
+
+State 61:
+comando_enquanto -> WHILE expressao DO . nonempty_list(comando) FWHILE [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE shift to state 24
+-- On SAIDA shift to state 62
+-- On IF shift to state 69
+-- On ID shift to state 27
+-- On ENTRADA shift to state 72
+-- On variavel shift to state 76
+-- On nonempty_list(comando) shift to state 91
+-- On comando_se shift to state 82
+-- On comando_saida shift to state 83
+-- On comando_entrada shift to state 84
+-- On comando_enquanto shift to state 85
+-- On comando_atribuicao shift to state 86
+-- On comando shift to state 87
+
+State 62:
+comando_saida -> SAIDA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On APAR shift to state 63
+
+State 63:
+comando_saida -> SAIDA APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On separated_nonempty_list(VIRG,expressao) shift to state 64
+-- On expressao shift to state 66
+
+State 64:
+comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On FPAR shift to state 65
+
+State 65:
+comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On SAIDA reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On IF reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On ID reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On FWHILE reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On FPROGRAMA reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On FIF reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On FFUNCTION reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On ENTRADA reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On ELSE reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+
+State 66:
+expressao -> expressao . MAIS expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . LT expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . GT expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . AND expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+expressao -> expressao . OR expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
+separated_nonempty_list(VIRG,expressao) -> expressao . [ FPAR ]
+separated_nonempty_list(VIRG,expressao) -> expressao . VIRG separated_nonempty_list(VIRG,expressao) [ FPAR ]
+-- On VIRG shift to state 67
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
+-- On FPAR reduce production separated_nonempty_list(VIRG,expressao) -> expressao 
+
+State 67:
+separated_nonempty_list(VIRG,expressao) -> expressao VIRG . separated_nonempty_list(VIRG,expressao) [ FPAR ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On separated_nonempty_list(VIRG,expressao) shift to state 68
+-- On expressao shift to state 66
+
+State 68:
+separated_nonempty_list(VIRG,expressao) -> expressao VIRG separated_nonempty_list(VIRG,expressao) . [ FPAR ]
+-- On FPAR reduce production separated_nonempty_list(VIRG,expressao) -> expressao VIRG separated_nonempty_list(VIRG,expressao) 
+
+State 69:
+comando_se -> IF . expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 70
+
+State 70:
+comando_se -> IF expressao . ENTAO nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . LT expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . GT expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . AND expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+expressao -> expressao . OR expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On ENTAO shift to state 71
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
+
+State 71:
+comando_se -> IF expressao ENTAO . nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE shift to state 24
+-- On SAIDA shift to state 62
+-- On IF shift to state 69
+-- On ID shift to state 27
+-- On ENTRADA shift to state 72
+-- On variavel shift to state 76
+-- On nonempty_list(comando) shift to state 79
+-- On comando_se shift to state 82
+-- On comando_saida shift to state 83
+-- On comando_entrada shift to state 84
+-- On comando_enquanto shift to state 85
+-- On comando_atribuicao shift to state 86
+-- On comando shift to state 87
+
+State 72:
+comando_entrada -> ENTRADA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On APAR shift to state 73
+
+State 73:
+comando_entrada -> ENTRADA APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On separated_nonempty_list(VIRG,expressao) shift to state 74
+-- On expressao shift to state 66
+
+State 74:
+comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On FPAR shift to state 75
+
+State 75:
+comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On SAIDA reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On IF reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On ID reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On FWHILE reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On FPROGRAMA reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On FIF reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On FFUNCTION reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On ENTRADA reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+-- On ELSE reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
+
+State 76:
+comando_atribuicao -> variavel . ATRIB expressao [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On ATRIB shift to state 77
+
+State 77:
+comando_atribuicao -> variavel ATRIB . expressao [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On LITSTRING shift to state 25
+-- On LITINT shift to state 26
+-- On ID shift to state 27
+-- On APAR shift to state 28
+-- On variavel shift to state 29
+-- On expressao shift to state 78
+
+State 78:
+comando_atribuicao -> variavel ATRIB expressao . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+expressao -> expressao . MAIS expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . MENOS expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . MULTI expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . DIV expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . RESTO expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . POTEN expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . LT expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . GT expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . LTE expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . GTE expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . EQUALS expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . DIFER expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . AND expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+expressao -> expressao . OR expressao [ WHILE SAIDA RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FPROGRAMA FIF FFUNCTION EQUALS ENTRADA ELSE DIV DIFER AND ]
+-- On RESTO shift to state 31
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 33
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
+-- On WHILE reduce production comando_atribuicao -> variavel ATRIB expressao 
+-- On SAIDA reduce production comando_atribuicao -> variavel ATRIB expressao 
+-- On IF reduce production comando_atribuicao -> variavel ATRIB expressao 
+-- On ID reduce production comando_atribuicao -> variavel ATRIB expressao 
+-- On FWHILE reduce production comando_atribuicao -> variavel ATRIB expressao 
+-- On FPROGRAMA reduce production comando_atribuicao -> variavel ATRIB expressao 
+-- On FIF reduce production comando_atribuicao -> variavel ATRIB expressao 
+-- On FFUNCTION reduce production comando_atribuicao -> variavel ATRIB expressao 
+-- On ENTRADA reduce production comando_atribuicao -> variavel ATRIB expressao 
+-- On ELSE reduce production comando_atribuicao -> variavel ATRIB expressao 
+
+State 79:
+comando_se -> IF expressao ENTAO nonempty_list(comando) . option(__anonymous_0) FIF [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On ELSE shift to state 80
+-- On option(__anonymous_0) shift to state 89
+-- On FIF reduce production option(__anonymous_0) -> 
+
+State 80:
+option(__anonymous_0) -> ELSE . nonempty_list(comando) [ FIF ]
+-- On WHILE shift to state 24
+-- On SAIDA shift to state 62
+-- On IF shift to state 69
+-- On ID shift to state 27
+-- On ENTRADA shift to state 72
+-- On variavel shift to state 76
+-- On nonempty_list(comando) shift to state 81
+-- On comando_se shift to state 82
+-- On comando_saida shift to state 83
+-- On comando_entrada shift to state 84
+-- On comando_enquanto shift to state 85
+-- On comando_atribuicao shift to state 86
+-- On comando shift to state 87
+
+State 81:
+option(__anonymous_0) -> ELSE nonempty_list(comando) . [ FIF ]
+-- On FIF reduce production option(__anonymous_0) -> ELSE nonempty_list(comando) 
+
+State 82:
+comando -> comando_se . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE reduce production comando -> comando_se 
+-- On SAIDA reduce production comando -> comando_se 
+-- On IF reduce production comando -> comando_se 
+-- On ID reduce production comando -> comando_se 
+-- On FWHILE reduce production comando -> comando_se 
+-- On FPROGRAMA reduce production comando -> comando_se 
+-- On FIF reduce production comando -> comando_se 
+-- On FFUNCTION reduce production comando -> comando_se 
+-- On ENTRADA reduce production comando -> comando_se 
+-- On ELSE reduce production comando -> comando_se 
+
+State 83:
+comando -> comando_saida . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE reduce production comando -> comando_saida 
+-- On SAIDA reduce production comando -> comando_saida 
+-- On IF reduce production comando -> comando_saida 
+-- On ID reduce production comando -> comando_saida 
+-- On FWHILE reduce production comando -> comando_saida 
+-- On FPROGRAMA reduce production comando -> comando_saida 
+-- On FIF reduce production comando -> comando_saida 
+-- On FFUNCTION reduce production comando -> comando_saida 
+-- On ENTRADA reduce production comando -> comando_saida 
+-- On ELSE reduce production comando -> comando_saida 
+
+State 84:
+comando -> comando_entrada . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE reduce production comando -> comando_entrada 
+-- On SAIDA reduce production comando -> comando_entrada 
+-- On IF reduce production comando -> comando_entrada 
+-- On ID reduce production comando -> comando_entrada 
+-- On FWHILE reduce production comando -> comando_entrada 
+-- On FPROGRAMA reduce production comando -> comando_entrada 
+-- On FIF reduce production comando -> comando_entrada 
+-- On FFUNCTION reduce production comando -> comando_entrada 
+-- On ENTRADA reduce production comando -> comando_entrada 
+-- On ELSE reduce production comando -> comando_entrada 
+
+State 85:
+comando -> comando_enquanto . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE reduce production comando -> comando_enquanto 
+-- On SAIDA reduce production comando -> comando_enquanto 
+-- On IF reduce production comando -> comando_enquanto 
+-- On ID reduce production comando -> comando_enquanto 
+-- On FWHILE reduce production comando -> comando_enquanto 
+-- On FPROGRAMA reduce production comando -> comando_enquanto 
+-- On FIF reduce production comando -> comando_enquanto 
+-- On FFUNCTION reduce production comando -> comando_enquanto 
+-- On ENTRADA reduce production comando -> comando_enquanto 
+-- On ELSE reduce production comando -> comando_enquanto 
+
+State 86:
+comando -> comando_atribuicao . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE reduce production comando -> comando_atribuicao 
+-- On SAIDA reduce production comando -> comando_atribuicao 
+-- On IF reduce production comando -> comando_atribuicao 
+-- On ID reduce production comando -> comando_atribuicao 
+-- On FWHILE reduce production comando -> comando_atribuicao 
+-- On FPROGRAMA reduce production comando -> comando_atribuicao 
+-- On FIF reduce production comando -> comando_atribuicao 
+-- On FFUNCTION reduce production comando -> comando_atribuicao 
+-- On ENTRADA reduce production comando -> comando_atribuicao 
+-- On ELSE reduce production comando -> comando_atribuicao 
+
+State 87:
+nonempty_list(comando) -> comando . [ FWHILE FIF ELSE ]
+nonempty_list(comando) -> comando . nonempty_list(comando) [ FWHILE FIF ELSE ]
+-- On WHILE shift to state 24
+-- On SAIDA shift to state 62
+-- On IF shift to state 69
+-- On ID shift to state 27
+-- On ENTRADA shift to state 72
+-- On variavel shift to state 76
+-- On nonempty_list(comando) shift to state 88
+-- On comando_se shift to state 82
+-- On comando_saida shift to state 83
+-- On comando_entrada shift to state 84
+-- On comando_enquanto shift to state 85
+-- On comando_atribuicao shift to state 86
+-- On comando shift to state 87
+-- On FWHILE reduce production nonempty_list(comando) -> comando 
+-- On FIF reduce production nonempty_list(comando) -> comando 
+-- On ELSE reduce production nonempty_list(comando) -> comando 
+
+State 88:
+nonempty_list(comando) -> comando nonempty_list(comando) . [ FWHILE FIF ELSE ]
+-- On FWHILE reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
+-- On FIF reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
+-- On ELSE reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
+
+State 89:
+comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) . FIF [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On FIF shift to state 90
+
+State 90:
+comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+-- On SAIDA reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+-- On IF reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+-- On ID reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+-- On FWHILE reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+-- On FPROGRAMA reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+-- On FIF reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+-- On FFUNCTION reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+-- On ENTRADA reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+-- On ELSE reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
+
+State 91:
+comando_enquanto -> WHILE expressao DO nonempty_list(comando) . FWHILE [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On FWHILE shift to state 92
+
+State 92:
+comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE . [ WHILE SAIDA IF ID FWHILE FPROGRAMA FIF FFUNCTION ENTRADA ELSE ]
+-- On WHILE reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+-- On SAIDA reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+-- On IF reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+-- On ID reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+-- On FWHILE reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+-- On FPROGRAMA reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+-- On FIF reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+-- On FFUNCTION reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+-- On ENTRADA reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+-- On ELSE reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
+
+State 93:
+decFunctions -> FUNCTION ID APAR declaracao FPAR declaracao INI list(comando) . FFUNCTION [ INI FUNCTION ]
+-- On FFUNCTION shift to state 94
+
+State 94:
+decFunctions -> FUNCTION ID APAR declaracao FPAR declaracao INI list(comando) FFUNCTION . [ INI FUNCTION ]
+-- On INI reduce production decFunctions -> FUNCTION ID APAR declaracao FPAR declaracao INI list(comando) FFUNCTION 
+-- On FUNCTION reduce production decFunctions -> FUNCTION ID APAR declaracao FPAR declaracao INI list(comando) FFUNCTION 
+
+State 95:
+list(comando) -> comando . list(comando) [ FPROGRAMA FFUNCTION ]
+-- On WHILE shift to state 24
+-- On SAIDA shift to state 62
+-- On IF shift to state 69
+-- On ID shift to state 27
+-- On ENTRADA shift to state 72
+-- On variavel shift to state 76
+-- On list(comando) shift to state 96
+-- On comando_se shift to state 82
+-- On comando_saida shift to state 83
+-- On comando_entrada shift to state 84
+-- On comando_enquanto shift to state 85
+-- On comando_atribuicao shift to state 86
+-- On comando shift to state 95
+-- On FPROGRAMA reduce production list(comando) -> 
+-- On FFUNCTION reduce production list(comando) -> 
+
+State 96:
+list(comando) -> comando list(comando) . [ FPROGRAMA FFUNCTION ]
+-- On FPROGRAMA reduce production list(comando) -> comando list(comando) 
+-- On FFUNCTION reduce production list(comando) -> comando list(comando) 
+
+State 97:
+prog -> PROGRAMA LITSTRING declaracao list(decFunctions) . INI list(comando) FPROGRAMA EOF [ # ]
+-- On INI shift to state 98
+
+State 98:
+prog -> PROGRAMA LITSTRING declaracao list(decFunctions) INI . list(comando) FPROGRAMA EOF [ # ]
+-- On WHILE shift to state 24
+-- On SAIDA shift to state 62
+-- On IF shift to state 69
+-- On ID shift to state 27
+-- On ENTRADA shift to state 72
+-- On variavel shift to state 76
+-- On list(comando) shift to state 99
+-- On comando_se shift to state 82
+-- On comando_saida shift to state 83
+-- On comando_entrada shift to state 84
+-- On comando_enquanto shift to state 85
+-- On comando_atribuicao shift to state 86
+-- On comando shift to state 95
+-- On FPROGRAMA reduce production list(comando) -> 
+
+State 99:
+prog -> PROGRAMA LITSTRING declaracao list(decFunctions) INI list(comando) . FPROGRAMA EOF [ # ]
+-- On FPROGRAMA shift to state 100
+
+State 100:
+prog -> PROGRAMA LITSTRING declaracao list(decFunctions) INI list(comando) FPROGRAMA . EOF [ # ]
+-- On EOF shift to state 101
+
+State 101:
+prog -> PROGRAMA LITSTRING declaracao list(decFunctions) INI list(comando) FPROGRAMA EOF . [ # ]
+-- On # reduce production prog -> PROGRAMA LITSTRING declaracao list(decFunctions) INI list(comando) FPROGRAMA EOF 
+
+State 102:
+list(decFunctions) -> decFunctions . list(decFunctions) [ INI ]
+-- On FUNCTION shift to state 17
+-- On list(decFunctions) shift to state 103
+-- On decFunctions shift to state 102
+-- On INI reduce production list(decFunctions) -> 
+
+State 103:
+list(decFunctions) -> decFunctions list(decFunctions) . [ INI ]
+-- On INI reduce production list(decFunctions) -> decFunctions list(decFunctions) 
+
+State 104:
+prog' -> prog . [ # ]
+-- On # accept prog
+

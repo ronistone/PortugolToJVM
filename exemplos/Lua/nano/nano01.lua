@@ -1,0 +1,2 @@
+function main(): nil
+end
