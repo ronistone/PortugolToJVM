@@ -66,7 +66,18 @@ let parse_arq nome =
   let _ = close_in ic in
   ast
 
-
+let rec tokens lexbuf =
+  let tok = Lexico.read lexbuf in
+  match tok with
+  | Sintatico.EOF -> [Sintatico.EOF]
+  | _ -> tok :: tokens lexbuf
+  
+let lexicoArq arq =
+  let ic = open_in arq in
+  let lexbuf = Lexing.from_channel ic in
+  let toks = tokens lexbuf in
+  let _ = close_in ic in
+  toks
 (* Para compilar:
      ocamlbuild -use-menhir sintaticoTest.byte
  *)

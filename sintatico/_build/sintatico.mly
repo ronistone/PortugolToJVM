@@ -4,32 +4,26 @@
 
 %token <int> LITINT
 %token <string> LITSTRING
+%token <char> LITCHAR
 %token <string> ID
+/* %token <bool> LITBOOL */
+%token FUNCTION FFUNCTION
 %token PROGRAMA FPROGRAMA INI
 %token MAIS MENOS MULTI DIV
-%token INTEGER CARACTER REAL VAR
+%token INTEGER CARACTER REAL VAR BOOL
 %token APAR FPAR
 %token ATRIB
 %token IF
 %token ELSE
-%token WHILE FWHILE
-%token EQUALS DIFER
-%token GTE
-%token GT
-%token LTE
-%token LT
-%token POTEN
-%token RESTO
-/* %token DOT */
+%token EQUALS DIFER GTE GT LTE LT POTEN RESTO
 %token VIRG
-%token AND
-%token OR
+%token AND OR
 %token DEF
-%token FUNCTION FFUNCTION
-%token SAIDA ENTRADA
+%token SAIDA ENTRADA SAIDA_LINHA
+%token WHILE FWHILE FOR FFOR SWITCH FSWITCH CASE CASE_DEFAULT RETURN
 %token DO
 %token FIF
-%token ENTAO
+%token ENTAO BEGIN END
 %token EOF
 
 %left OR AND
@@ -47,10 +41,10 @@
 prog:
     | PROGRAMA LITSTRING 
         ds = declaracao
-        dFunctions = decFunctions*
       INI
         cs = comando* 
       FPROGRAMA
+      dFunctions = decFunctions*
       EOF {
         let functions = Funcoes(dFunctions) in 
          Programa (List.flatten ds, functions, cs) }
@@ -68,17 +62,29 @@ variaveis:
     }
 
 tipo:
-    | INTEGER { TipoInt }
-    | REAL { TipoReal }
-    | CARACTER { TipoString }
+    | INTEGER   { TipoInt }
+    | REAL      { TipoReal }
+    | CARACTER  { TipoString }
+    | BOOL      { TipoBool }
     ;
 
 comando: c=comando_atribuicao { c }
        | c=comando_se         { c }
        | c=comando_entrada    { c }
        | c=comando_saida      { c }
+       | c=comando_saida_l    { c }
        | c=comando_enquanto   { c }
+       | c=comando_for        { c }
+       | c=comando_switch     { c }
+       | c=comando_return     { c }
+       | c=comando_chamada     { c }
        ;
+
+comando_return: RETURN e=expressao {
+      CmdReturn (e)
+}
+
+comando_chamada: exp=chamada { CmdChamada(exp) }
 
 comando_atribuicao: v=variavel ATRIB e=expressao {
       CmdAtrib (v,e)
@@ -101,27 +107,62 @@ comando_saida: SAIDA APAR xs=separated_nonempty_list(VIRG, expressao) FPAR {
                  CmdSaida expressions
              }
 
+comando_saida_l: SAIDA_LINHA APAR xs=separated_nonempty_list(VIRG, expressao) FPAR {
+                 let expressions = Expressoes(xs) in 
+                 CmdSaidaLine expressions
+             }
+
 comando_enquanto: WHILE teste=expressao DO
                       entao=comando+
                   FWHILE {
                     CmdEnquanto( teste, entao )
                   }
 
-decFunctions: FUNCTION ID APAR args=declaracao FPAR
+comando_for:  FOR v=variavel BEGIN l=expressao END r=expressao DO
+                c=comando+
+              FFOR {
+                CmdFor(v, l, r, c)
+              }
+
+comando_switch: SWITCH v=variavel
+                    c=caso+
+                    d=option(default)
+                FSWITCH {
+                  CmdSwitch(v, c, d)
+                }
+
+caso: CASE e=expressao
+          c=comando+ {
+            CmdCase(e, c)
+          }
+
+default: CASE_DEFAULT
+            c=comando+ {
+              CmdCaseDefault(c)
+            }
+
+decFunctions: FUNCTION a=ID APAR args=variaveis* FPAR DEF t=tipo
                   variables=declaracao
-                  INI
-                    corpo=comando*
-                  FFUNCTION {
-                      Funcao( List.flatten args, List.flatten variables, corpo )
+                INI
+                  corpo=comando*
+                FFUNCTION b=ID {  
+                      Funcao( a, b, t, List.flatten args, List.flatten variables, corpo )
                   }
 
+chamada: i=ID APAR xs=separated_nonempty_list(VIRG, expressao) FPAR { 
+              let expressions = Expressoes(xs) in 
+              ExpFuncao(i, expressions) 
+          }
 
 expressao:
-        | v=variavel { ExpVar v    }
+        | c=chamada     { c }
+        | v=variavel    { ExpVar v    }
         | i=LITINT      { ExpInt i    }
         | s=LITSTRING   { ExpString s }
+        | c=LITCHAR     { ExpChar c }
         | e1=expressao op=oper e2=expressao { ExpOp (op, e1, e2) }
         | APAR e=expressao FPAR { e }
+        | MENOS e=expressao { ExpNegativo(e) }
 
 %inline oper:
 	| MAIS  { Mais  }

@@ -21,47 +21,6 @@
   let erro lin col msg =
     let mensagem = sprintf "%d-%d: %s" lin col msg in
        failwith mensagem
-
-(* type tokens = APAR
-            | FPAR
-            | ATRIB
-            | IF
-            | ELSE
-            | WHILE
-            | EQUALS
-            | GTE
-            | GT
-            | LTE
-            | LT
-            | DIV
-            | MULTI
-            | POTEN
-            | RESTO
-            | MAIS
-            | MENOS
-            | DOT
-            | VIRG
-            | AND
-            | OR
-            | DEF
-            | VAR
-            | INCLUDE
-            | INTEGER
-            | CARACTER
-            | REAL
-            | FUNCTION
-            | PROGRAMA
-            | FPROGRAMA
-            | DO
-            | FIF
-            | ENTAO
-            | ACHAVE
-            | FCHAVE
-            | LITINT of int
-            | LITSTRING of string
-            | ID of string
-            | EOF
-            | INI *)
 } 
 
 let digito = ['0' - '9']
@@ -102,24 +61,38 @@ rule read = parse
 | inteiro as num { let numero = int_of_string num in 
                     LITINT numero  } 
 | "e"         { AND }
+| "E"         { AND }
 | "ou"        { OR }
+| "OU"        { OR }
 | "se"        { IF }
 | "então"     { ENTAO }
 | "senão"     { ELSE }
 | "fim_se"    { FIF }
 | "início"    { INI }
 | "faça"      { DO }
+| "fim_para"  { FFOR }
+| "para"      { FOR }
+| "de"        { BEGIN }
+| "até"       { END }
 | "fim_enquanto" { FWHILE }
 | "enquanto"  { WHILE }
+| "escolha"   { SWITCH }
+| "fim_escolha" { FSWITCH }
+| "caso"      { CASE }
+| "outrocaso" { CASE_DEFAULT }
 | "algoritmo" { PROGRAMA }
 | "fim_algoritmo" { FPROGRAMA }
 | "escreva"   { SAIDA }
+| "escreval"  { SAIDA_LINHA }
 | "leia"      { ENTRADA }
-| "fim_procedimento"    { FFUNCTION }
-| "procedimento"    { FUNCTION }
+| "fim_função"    { FFUNCTION }
+| "retorne"   { RETURN }
+| "função"    { FUNCTION }
 | "inteiro"   { INTEGER }
-| "real"   { REAL }
+| "real"      { REAL }
+| "caractere" { CARACTER }
 | identificador as id { ID id }
+| "'"_"'" as s  { let c = String.get s 1 in LITCHAR (c) }
 | '"'        { let pos = lexbuf.lex_curr_p in
                let lin = pos.pos_lnum
                and col = pos.pos_cnum - pos.pos_bol - 1 in

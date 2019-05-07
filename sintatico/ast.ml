@@ -11,6 +11,7 @@ and expressoes = Expressoes of expressao list
 and tipo = TipoInt
          | TipoString
          | TipoReal
+         | TipoBool
 
 and campos = campo list
 and campo = ident * tipo
@@ -18,8 +19,17 @@ and campo = ident * tipo
 and comando = CmdAtrib of variavel * expressao
             | CmdSe of expressao * comandos * (comandos option)
             | CmdEnquanto of expressao * comandos
+            | CmdReturn of expressao
             | CmdEntrada of expressoes
+            | CmdChamada of expressao
             | CmdSaida of expressoes
+            | CmdSaidaLine of expressoes
+            | CmdFor of variavel * expressao * expressao * comandos
+            | CmdSwitch of variavel * cases * (caseDefault option)
+            
+and cases = case list
+and case = CmdCase of expressao * comandos
+and caseDefault = CmdCaseDefault of comandos
 
 and variaveis = variavel list
 and variavel = VarSimples of ident
@@ -29,9 +39,12 @@ and variavel = VarSimples of ident
 and expressao = ExpVar of variavel
               | ExpInt of int
               | ExpString of string
+              | ExpChar of char
+              | ExpFuncao of ident * expressoes
               | ExpOp of oper * expressao * expressao
+              | ExpNegativo of expressao
 
-and funcao = Funcao of declaracoes * declaracoes * comandos
+and funcao = Funcao of ident * ident * tipo * declaracoes * declaracoes * comandos
 
 and oper = Mais
          | Menos

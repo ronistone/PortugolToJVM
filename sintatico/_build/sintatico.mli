@@ -5,7 +5,10 @@ type token =
   | WHILE
   | VIRG
   | VAR
+  | SWITCH
+  | SAIDA_LINHA
   | SAIDA
+  | RETURN
   | RESTO
   | REAL
   | PROGRAMA
@@ -18,6 +21,7 @@ type token =
   | LT
   | LITSTRING of (string)
   | LITINT of (int)
+  | LITCHAR of (char)
   | INTEGER
   | INI
   | IF
@@ -26,20 +30,28 @@ type token =
   | GT
   | FWHILE
   | FUNCTION
+  | FSWITCH
   | FPROGRAMA
   | FPAR
+  | FOR
   | FIF
   | FFUNCTION
+  | FFOR
   | EQUALS
   | EOF
   | ENTRADA
   | ENTAO
+  | END
   | ELSE
   | DO
   | DIV
   | DIFER
   | DEF
+  | CASE_DEFAULT
+  | CASE
   | CARACTER
+  | BOOL
+  | BEGIN
   | ATRIB
   | APAR
   | AND

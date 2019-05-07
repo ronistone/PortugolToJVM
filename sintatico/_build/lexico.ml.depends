@@ -1,1 +1,1 @@
-lexico.ml: Buffer Lexing Printf Sintatico
+lexico.ml: Buffer Lexing Printf Sintatico String
