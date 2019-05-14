@@ -22,6 +22,7 @@ type token =
   | LITSTRING of (string)
   | LITINT of (int)
   | LITCHAR of (char)
+  | LITBOOL of (bool)
   | INTEGER
   | INI
   | IF

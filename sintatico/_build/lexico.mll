@@ -91,6 +91,9 @@ rule read = parse
 | "inteiro"   { INTEGER }
 | "real"      { REAL }
 | "caractere" { CARACTER }
+| "lógico"    { BOOL }
+| "verdadeiro" { LITBOOL(true) }
+| "falso"     { LITBOOL(false) }
 | identificador as id { ID id }
 | "'"_"'" as s  { let c = String.get s 1 in LITCHAR (c) }
 | '"'        { let pos = lexbuf.lex_curr_p in

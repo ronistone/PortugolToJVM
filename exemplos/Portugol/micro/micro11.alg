@@ -23,7 +23,9 @@ fim_algoritmo
 função verifica(n: inteiro) : inteiro
     var
         res: inteiro
+        x : lógico
     início
+        x <- verdadeiro
         se n > 0 então
             res <- 1
         senão se n < 0

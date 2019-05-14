@@ -40,6 +40,7 @@ and expressao = ExpVar of variavel
               | ExpInt of int
               | ExpString of string
               | ExpChar of char
+              | ExpBool of bool
               | ExpFuncao of ident * expressoes
               | ExpOp of oper * expressao * expressao
               | ExpNegativo of expressao

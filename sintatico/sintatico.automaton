@@ -1,7 +1,7 @@
 State 0:
 prog' -> . prog [ # ]
 -- On PROGRAMA shift to state 1
--- On prog shift to state 150
+-- On prog shift to state 151
 
 State 1:
 prog -> PROGRAMA . LITSTRING declaracao INI list(comando) FPROGRAMA list(decFunctions) EOF [ # ]
@@ -107,28 +107,28 @@ prog -> PROGRAMA LITSTRING declaracao . INI list(comando) FPROGRAMA list(decFunc
 State 18:
 prog -> PROGRAMA LITSTRING declaracao INI . list(comando) FPROGRAMA list(decFunctions) EOF [ # ]
 -- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On IF shift to state 82
--- On ID shift to state 24
--- On FOR shift to state 85
--- On ENTRADA shift to state 92
--- On variavel shift to state 96
--- On list(comando) shift to state 130
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 144
--- On chamada shift to state 113
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On FOR shift to state 86
+-- On ENTRADA shift to state 93
+-- On variavel shift to state 97
+-- On list(comando) shift to state 131
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 145
+-- On chamada shift to state 114
 -- On FPROGRAMA reduce production list(comando) -> 
 
 State 19:
@@ -137,11 +137,12 @@ comando_enquanto -> WHILE . expressao DO nonempty_list(comando) FWHILE [ WHILE S
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 65
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 66
+-- On chamada shift to state 34
 
 State 20:
 expressao -> MENOS . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -149,11 +150,12 @@ expressao -> MENOS . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN REST
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 64
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 65
+-- On chamada shift to state 34
 
 State 21:
 expressao -> LITSTRING . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -276,9 +278,49 @@ expressao -> LITCHAR . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN 
 -- On AND reduce production expressao -> LITCHAR 
 
 State 24:
+expressao -> LITBOOL . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
+-- On WHILE reduce production expressao -> LITBOOL 
+-- On VIRG reduce production expressao -> LITBOOL 
+-- On SWITCH reduce production expressao -> LITBOOL 
+-- On SAIDA_LINHA reduce production expressao -> LITBOOL 
+-- On SAIDA reduce production expressao -> LITBOOL 
+-- On RETURN reduce production expressao -> LITBOOL 
+-- On RESTO reduce production expressao -> LITBOOL 
+-- On POTEN reduce production expressao -> LITBOOL 
+-- On OR reduce production expressao -> LITBOOL 
+-- On MULTI reduce production expressao -> LITBOOL 
+-- On MENOS reduce production expressao -> LITBOOL 
+-- On MAIS reduce production expressao -> LITBOOL 
+-- On LTE reduce production expressao -> LITBOOL 
+-- On LT reduce production expressao -> LITBOOL 
+-- On IF reduce production expressao -> LITBOOL 
+-- On ID reduce production expressao -> LITBOOL 
+-- On GTE reduce production expressao -> LITBOOL 
+-- On GT reduce production expressao -> LITBOOL 
+-- On FWHILE reduce production expressao -> LITBOOL 
+-- On FSWITCH reduce production expressao -> LITBOOL 
+-- On FPROGRAMA reduce production expressao -> LITBOOL 
+-- On FPAR reduce production expressao -> LITBOOL 
+-- On FOR reduce production expressao -> LITBOOL 
+-- On FIF reduce production expressao -> LITBOOL 
+-- On FFUNCTION reduce production expressao -> LITBOOL 
+-- On FFOR reduce production expressao -> LITBOOL 
+-- On EQUALS reduce production expressao -> LITBOOL 
+-- On ENTRADA reduce production expressao -> LITBOOL 
+-- On ENTAO reduce production expressao -> LITBOOL 
+-- On END reduce production expressao -> LITBOOL 
+-- On ELSE reduce production expressao -> LITBOOL 
+-- On DO reduce production expressao -> LITBOOL 
+-- On DIV reduce production expressao -> LITBOOL 
+-- On DIFER reduce production expressao -> LITBOOL 
+-- On CASE_DEFAULT reduce production expressao -> LITBOOL 
+-- On CASE reduce production expressao -> LITBOOL 
+-- On AND reduce production expressao -> LITBOOL 
+
+State 25:
 chamada -> ID . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 variavel -> ID . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE ATRIB AND ]
--- On APAR shift to state 25
+-- On APAR shift to state 26
 -- On WHILE reduce production variavel -> ID 
 -- On VIRG reduce production variavel -> ID 
 -- On SWITCH reduce production variavel -> ID 
@@ -318,32 +360,34 @@ variavel -> ID . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MUL
 -- On ATRIB reduce production variavel -> ID 
 -- On AND reduce production variavel -> ID 
 
-State 25:
+State 26:
 chamada -> ID APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On separated_nonempty_list(VIRG,expressao) shift to state 59
--- On expressao shift to state 61
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On separated_nonempty_list(VIRG,expressao) shift to state 60
+-- On expressao shift to state 62
+-- On chamada shift to state 34
 
-State 26:
+State 27:
 expressao -> APAR . expressao FPAR [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 28
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 29
+-- On chamada shift to state 34
 
-State 27:
+State 28:
 expressao -> variavel . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On WHILE reduce production expressao -> variavel 
 -- On VIRG reduce production expressao -> variavel 
@@ -383,7 +427,7 @@ expressao -> variavel . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN
 -- On CASE reduce production expressao -> variavel 
 -- On AND reduce production expressao -> variavel 
 
-State 28:
+State 29:
 expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
 expressao -> expressao . MENOS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
 expressao -> expressao . MULTI expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
@@ -399,35 +443,36 @@ expressao -> expressao . DIFER expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE L
 expressao -> expressao . AND expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
 expressao -> expressao . OR expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
 expressao -> APAR expressao . FPAR [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On OR shift to state 42
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On FPAR shift to state 56
--- On EQUALS shift to state 52
--- On DIV shift to state 34
--- On DIFER shift to state 54
--- On AND shift to state 57
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On FPAR shift to state 57
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
 
-State 29:
+State 30:
 expressao -> expressao RESTO . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 30
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 31
+-- On chamada shift to state 34
 
-State 30:
+State 31:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -443,8 +488,8 @@ expressao -> expressao . EQUALS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA 
 expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On MULTI shift to state 31
--- On DIV shift to state 34
+-- On MULTI shift to state 32
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao RESTO expressao 
 -- On VIRG reduce production expressao -> expressao RESTO expressao 
 -- On SWITCH reduce production expressao -> expressao RESTO expressao 
@@ -481,19 +526,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao RESTO expressao 
 -- On AND reduce production expressao -> expressao RESTO expressao 
 
-State 31:
+State 32:
 expressao -> expressao MULTI . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 32
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 33
+-- On chamada shift to state 34
 
-State 32:
+State 33:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -547,7 +593,7 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao MULTI expressao 
 -- On AND reduce production expressao -> expressao MULTI expressao 
 
-State 33:
+State 34:
 expressao -> chamada . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On WHILE reduce production expressao -> chamada 
 -- On VIRG reduce production expressao -> chamada 
@@ -587,19 +633,20 @@ expressao -> chamada . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN 
 -- On CASE reduce production expressao -> chamada 
 -- On AND reduce production expressao -> chamada 
 
-State 34:
+State 35:
 expressao -> expressao DIV . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 35
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 36
+-- On chamada shift to state 34
 
-State 35:
+State 36:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -653,19 +700,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao DIV expressao 
 -- On AND reduce production expressao -> expressao DIV expressao 
 
-State 36:
+State 37:
 expressao -> expressao POTEN . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 37
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 38
+-- On chamada shift to state 34
 
-State 37:
+State 38:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -681,12 +729,12 @@ expressao -> expressao . EQUALS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA 
 expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On DIV shift to state 34
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao POTEN expressao 
 -- On VIRG reduce production expressao -> expressao POTEN expressao 
 -- On SWITCH reduce production expressao -> expressao POTEN expressao 
@@ -719,19 +767,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao POTEN expressao 
 -- On AND reduce production expressao -> expressao POTEN expressao 
 
-State 38:
+State 39:
 expressao -> expressao MENOS . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 39
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 40
+-- On chamada shift to state 34
 
-State 39:
+State 40:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao MENOS expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -747,8 +796,8 @@ expressao -> expressao . EQUALS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA 
 expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On MULTI shift to state 31
--- On DIV shift to state 34
+-- On MULTI shift to state 32
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao MENOS expressao 
 -- On VIRG reduce production expressao -> expressao MENOS expressao 
 -- On SWITCH reduce production expressao -> expressao MENOS expressao 
@@ -785,19 +834,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao MENOS expressao 
 -- On AND reduce production expressao -> expressao MENOS expressao 
 
-State 40:
+State 41:
 expressao -> expressao MAIS . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 41
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 42
+-- On chamada shift to state 34
 
-State 41:
+State 42:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao MAIS expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -813,8 +863,8 @@ expressao -> expressao . EQUALS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA 
 expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On MULTI shift to state 31
--- On DIV shift to state 34
+-- On MULTI shift to state 32
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao MAIS expressao 
 -- On VIRG reduce production expressao -> expressao MAIS expressao 
 -- On SWITCH reduce production expressao -> expressao MAIS expressao 
@@ -851,19 +901,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao MAIS expressao 
 -- On AND reduce production expressao -> expressao MAIS expressao 
 
-State 42:
+State 43:
 expressao -> expressao OR . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 43
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 44
+-- On chamada shift to state 34
 
-State 43:
+State 44:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -879,18 +930,18 @@ expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA R
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao OR expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On EQUALS shift to state 52
--- On DIV shift to state 34
--- On DIFER shift to state 54
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
 -- On WHILE reduce production expressao -> expressao OR expressao 
 -- On VIRG reduce production expressao -> expressao OR expressao 
 -- On SWITCH reduce production expressao -> expressao OR expressao 
@@ -917,19 +968,20 @@ expressao -> expressao OR expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao OR expressao 
 -- On AND reduce production expressao -> expressao OR expressao 
 
-State 44:
+State 45:
 expressao -> expressao LTE . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 45
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 46
+-- On chamada shift to state 34
 
-State 45:
+State 46:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -945,12 +997,12 @@ expressao -> expressao . EQUALS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA 
 expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On DIV shift to state 34
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao LTE expressao 
 -- On VIRG reduce production expressao -> expressao LTE expressao 
 -- On SWITCH reduce production expressao -> expressao LTE expressao 
@@ -983,19 +1035,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao LTE expressao 
 -- On AND reduce production expressao -> expressao LTE expressao 
 
-State 46:
+State 47:
 expressao -> expressao LT . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 47
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 48
+-- On chamada shift to state 34
 
-State 47:
+State 48:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1011,12 +1064,12 @@ expressao -> expressao . EQUALS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA 
 expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On DIV shift to state 34
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao LT expressao 
 -- On VIRG reduce production expressao -> expressao LT expressao 
 -- On SWITCH reduce production expressao -> expressao LT expressao 
@@ -1049,19 +1102,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao LT expressao 
 -- On AND reduce production expressao -> expressao LT expressao 
 
-State 48:
+State 49:
 expressao -> expressao GTE . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 49
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 50
+-- On chamada shift to state 34
 
-State 49:
+State 50:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1077,12 +1131,12 @@ expressao -> expressao . EQUALS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA 
 expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On DIV shift to state 34
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao GTE expressao 
 -- On VIRG reduce production expressao -> expressao GTE expressao 
 -- On SWITCH reduce production expressao -> expressao GTE expressao 
@@ -1115,19 +1169,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao GTE expressao 
 -- On AND reduce production expressao -> expressao GTE expressao 
 
-State 50:
+State 51:
 expressao -> expressao GT . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 51
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 52
+-- On chamada shift to state 34
 
-State 51:
+State 52:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1143,12 +1198,12 @@ expressao -> expressao . EQUALS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA 
 expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On DIV shift to state 34
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao GT expressao 
 -- On VIRG reduce production expressao -> expressao GT expressao 
 -- On SWITCH reduce production expressao -> expressao GT expressao 
@@ -1181,19 +1236,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao GT expressao 
 -- On AND reduce production expressao -> expressao GT expressao 
 
-State 52:
+State 53:
 expressao -> expressao EQUALS . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 53
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 54
+-- On chamada shift to state 34
 
-State 53:
+State 54:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1209,16 +1265,16 @@ expressao -> expressao EQUALS expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA 
 expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On DIV shift to state 34
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao EQUALS expressao 
 -- On VIRG reduce production expressao -> expressao EQUALS expressao 
 -- On SWITCH reduce production expressao -> expressao EQUALS expressao 
@@ -1247,19 +1303,20 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao EQUALS expressao 
 -- On AND reduce production expressao -> expressao EQUALS expressao 
 
-State 54:
+State 55:
 expressao -> expressao DIFER . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 55
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 56
+-- On chamada shift to state 34
 
-State 55:
+State 56:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1275,16 +1332,16 @@ expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA R
 expressao -> expressao DIFER expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On DIV shift to state 34
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> expressao DIFER expressao 
 -- On VIRG reduce production expressao -> expressao DIFER expressao 
 -- On SWITCH reduce production expressao -> expressao DIFER expressao 
@@ -1313,7 +1370,7 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao DIFER expressao 
 -- On AND reduce production expressao -> expressao DIFER expressao 
 
-State 56:
+State 57:
 expressao -> APAR expressao FPAR . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On WHILE reduce production expressao -> APAR expressao FPAR 
 -- On VIRG reduce production expressao -> APAR expressao FPAR 
@@ -1353,19 +1410,20 @@ expressao -> APAR expressao FPAR . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN 
 -- On CASE reduce production expressao -> APAR expressao FPAR 
 -- On AND reduce production expressao -> APAR expressao FPAR 
 
-State 57:
+State 58:
 expressao -> expressao AND . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 58
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 59
+-- On chamada shift to state 34
 
-State 58:
+State 59:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1381,18 +1439,18 @@ expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA R
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao AND expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On EQUALS shift to state 52
--- On DIV shift to state 34
--- On DIFER shift to state 54
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
 -- On WHILE reduce production expressao -> expressao AND expressao 
 -- On VIRG reduce production expressao -> expressao AND expressao 
 -- On SWITCH reduce production expressao -> expressao AND expressao 
@@ -1419,11 +1477,11 @@ expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETU
 -- On CASE reduce production expressao -> expressao AND expressao 
 -- On AND reduce production expressao -> expressao AND expressao 
 
-State 59:
-chamada -> ID APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On FPAR shift to state 60
-
 State 60:
+chamada -> ID APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
+-- On FPAR shift to state 61
+
+State 61:
 chamada -> ID APAR separated_nonempty_list(VIRG,expressao) FPAR . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 -- On WHILE reduce production chamada -> ID APAR separated_nonempty_list(VIRG,expressao) FPAR 
 -- On VIRG reduce production chamada -> ID APAR separated_nonempty_list(VIRG,expressao) FPAR 
@@ -1463,7 +1521,7 @@ chamada -> ID APAR separated_nonempty_list(VIRG,expressao) FPAR . [ WHILE VIRG S
 -- On CASE reduce production chamada -> ID APAR separated_nonempty_list(VIRG,expressao) FPAR 
 -- On AND reduce production chamada -> ID APAR separated_nonempty_list(VIRG,expressao) FPAR 
 
-State 61:
+State 62:
 expressao -> expressao . MAIS expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
 expressao -> expressao . MENOS expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
 expressao -> expressao . MULTI expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
@@ -1480,41 +1538,42 @@ expressao -> expressao . AND expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LT
 expressao -> expressao . OR expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
 separated_nonempty_list(VIRG,expressao) -> expressao . [ FPAR ]
 separated_nonempty_list(VIRG,expressao) -> expressao . VIRG separated_nonempty_list(VIRG,expressao) [ FPAR ]
--- On VIRG shift to state 62
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On OR shift to state 42
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On EQUALS shift to state 52
--- On DIV shift to state 34
--- On DIFER shift to state 54
--- On AND shift to state 57
+-- On VIRG shift to state 63
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
 -- On FPAR reduce production separated_nonempty_list(VIRG,expressao) -> expressao 
 
-State 62:
+State 63:
 separated_nonempty_list(VIRG,expressao) -> expressao VIRG . separated_nonempty_list(VIRG,expressao) [ FPAR ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On separated_nonempty_list(VIRG,expressao) shift to state 63
--- On expressao shift to state 61
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On separated_nonempty_list(VIRG,expressao) shift to state 64
+-- On expressao shift to state 62
+-- On chamada shift to state 34
 
-State 63:
+State 64:
 separated_nonempty_list(VIRG,expressao) -> expressao VIRG separated_nonempty_list(VIRG,expressao) . [ FPAR ]
 -- On FPAR reduce production separated_nonempty_list(VIRG,expressao) -> expressao VIRG separated_nonempty_list(VIRG,expressao) 
 
-State 64:
+State 65:
 expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MULTI expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1530,8 +1589,8 @@ expressao -> expressao . DIFER expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA R
 expressao -> expressao . AND expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> MENOS expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
--- On MULTI shift to state 31
--- On DIV shift to state 34
+-- On MULTI shift to state 32
+-- On DIV shift to state 35
 -- On WHILE reduce production expressao -> MENOS expressao 
 -- On VIRG reduce production expressao -> MENOS expressao 
 -- On SWITCH reduce production expressao -> MENOS expressao 
@@ -1568,7 +1627,7 @@ expressao -> MENOS expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN REST
 -- On CASE reduce production expressao -> MENOS expressao 
 -- On AND reduce production expressao -> MENOS expressao 
 
-State 65:
+State 66:
 comando_enquanto -> WHILE expressao . DO nonempty_list(comando) FWHILE [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
 expressao -> expressao . MENOS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
@@ -1584,77 +1643,78 @@ expressao -> expressao . EQUALS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE 
 expressao -> expressao . DIFER expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
 expressao -> expressao . AND expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
 expressao -> expressao . OR expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On OR shift to state 42
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On EQUALS shift to state 52
--- On DO shift to state 66
--- On DIV shift to state 34
--- On DIFER shift to state 54
--- On AND shift to state 57
-
-State 66:
-comando_enquanto -> WHILE expressao DO . nonempty_list(comando) FWHILE [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On IF shift to state 82
--- On ID shift to state 24
--- On FOR shift to state 85
--- On ENTRADA shift to state 92
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 128
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 111
--- On chamada shift to state 113
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DO shift to state 67
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
 
 State 67:
-comando_switch -> SWITCH . variavel nonempty_list(caso) option(default) FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On ID shift to state 68
--- On variavel shift to state 69
+comando_enquanto -> WHILE expressao DO . nonempty_list(comando) FWHILE [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On WHILE shift to state 19
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On FOR shift to state 86
+-- On ENTRADA shift to state 93
+-- On variavel shift to state 97
+-- On nonempty_list(comando) shift to state 129
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 112
+-- On chamada shift to state 114
 
 State 68:
+comando_switch -> SWITCH . variavel nonempty_list(caso) option(default) FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On ID shift to state 69
+-- On variavel shift to state 70
+
+State 69:
 variavel -> ID . [ CASE BEGIN ]
 -- On CASE reduce production variavel -> ID 
 -- On BEGIN reduce production variavel -> ID 
 
-State 69:
-comando_switch -> SWITCH variavel . nonempty_list(caso) option(default) FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On CASE shift to state 70
--- On nonempty_list(caso) shift to state 120
--- On caso shift to state 126
-
 State 70:
+comando_switch -> SWITCH variavel . nonempty_list(caso) option(default) FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On CASE shift to state 71
+-- On nonempty_list(caso) shift to state 121
+-- On caso shift to state 127
+
+State 71:
 caso -> CASE . expressao nonempty_list(comando) [ FSWITCH CASE_DEFAULT CASE ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 71
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 72
+-- On chamada shift to state 34
 
-State 71:
+State 72:
 caso -> CASE expressao . nonempty_list(comando) [ FSWITCH CASE_DEFAULT CASE ]
 expressao -> expressao . MAIS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FOR EQUALS ENTRADA DIV DIFER AND ]
 expressao -> expressao . MENOS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FOR EQUALS ENTRADA DIV DIFER AND ]
@@ -1671,65 +1731,66 @@ expressao -> expressao . DIFER expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN
 expressao -> expressao . AND expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FOR EQUALS ENTRADA DIV DIFER AND ]
 expressao -> expressao . OR expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FOR EQUALS ENTRADA DIV DIFER AND ]
 -- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On OR shift to state 42
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On IF shift to state 82
--- On ID shift to state 24
--- On GTE shift to state 48
--- On GT shift to state 50
--- On FOR shift to state 85
--- On EQUALS shift to state 52
--- On ENTRADA shift to state 92
--- On DIV shift to state 34
--- On DIFER shift to state 54
--- On AND shift to state 57
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 119
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 111
--- On chamada shift to state 113
-
-State 72:
-comando_saida_l -> SAIDA_LINHA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On APAR shift to state 73
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On FOR shift to state 86
+-- On EQUALS shift to state 53
+-- On ENTRADA shift to state 93
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
+-- On variavel shift to state 97
+-- On nonempty_list(comando) shift to state 120
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 112
+-- On chamada shift to state 114
 
 State 73:
+comando_saida_l -> SAIDA_LINHA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On APAR shift to state 74
+
+State 74:
 comando_saida_l -> SAIDA_LINHA APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On separated_nonempty_list(VIRG,expressao) shift to state 74
--- On expressao shift to state 61
--- On chamada shift to state 33
-
-State 74:
-comando_saida_l -> SAIDA_LINHA APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On FPAR shift to state 75
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On separated_nonempty_list(VIRG,expressao) shift to state 75
+-- On expressao shift to state 62
+-- On chamada shift to state 34
 
 State 75:
+comando_saida_l -> SAIDA_LINHA APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On FPAR shift to state 76
+
+State 76:
 comando_saida_l -> SAIDA_LINHA APAR separated_nonempty_list(VIRG,expressao) FPAR . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando_saida_l -> SAIDA_LINHA APAR separated_nonempty_list(VIRG,expressao) FPAR 
 -- On SWITCH reduce production comando_saida_l -> SAIDA_LINHA APAR separated_nonempty_list(VIRG,expressao) FPAR 
@@ -1750,28 +1811,29 @@ comando_saida_l -> SAIDA_LINHA APAR separated_nonempty_list(VIRG,expressao) FPAR
 -- On CASE_DEFAULT reduce production comando_saida_l -> SAIDA_LINHA APAR separated_nonempty_list(VIRG,expressao) FPAR 
 -- On CASE reduce production comando_saida_l -> SAIDA_LINHA APAR separated_nonempty_list(VIRG,expressao) FPAR 
 
-State 76:
-comando_saida -> SAIDA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On APAR shift to state 77
-
 State 77:
+comando_saida -> SAIDA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On APAR shift to state 78
+
+State 78:
 comando_saida -> SAIDA APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On separated_nonempty_list(VIRG,expressao) shift to state 78
--- On expressao shift to state 61
--- On chamada shift to state 33
-
-State 78:
-comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On FPAR shift to state 79
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On separated_nonempty_list(VIRG,expressao) shift to state 79
+-- On expressao shift to state 62
+-- On chamada shift to state 34
 
 State 79:
+comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On FPAR shift to state 80
+
+State 80:
 comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
 -- On SWITCH reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
@@ -1792,19 +1854,20 @@ comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR . [ WHI
 -- On CASE_DEFAULT reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
 -- On CASE reduce production comando_saida -> SAIDA APAR separated_nonempty_list(VIRG,expressao) FPAR 
 
-State 80:
+State 81:
 comando_return -> RETURN . expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 81
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 82
+-- On chamada shift to state 34
 
-State 81:
+State 82:
 comando_return -> RETURN expressao . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 expressao -> expressao . MAIS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1820,20 +1883,20 @@ expressao -> expressao . EQUALS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETUR
 expressao -> expressao . DIFER expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On OR shift to state 42
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On EQUALS shift to state 52
--- On DIV shift to state 34
--- On DIFER shift to state 54
--- On AND shift to state 57
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
 -- On WHILE reduce production comando_return -> RETURN expressao 
 -- On SWITCH reduce production comando_return -> RETURN expressao 
 -- On SAIDA_LINHA reduce production comando_return -> RETURN expressao 
@@ -1853,19 +1916,20 @@ expressao -> expressao . OR expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RE
 -- On CASE_DEFAULT reduce production comando_return -> RETURN expressao 
 -- On CASE reduce production comando_return -> RETURN expressao 
 
-State 82:
+State 83:
 comando_se -> IF . expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 83
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 84
+-- On chamada shift to state 34
 
-State 83:
+State 84:
 comando_se -> IF expressao . ENTAO nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
 expressao -> expressao . MENOS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
@@ -1881,70 +1945,71 @@ expressao -> expressao . EQUALS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE 
 expressao -> expressao . DIFER expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
 expressao -> expressao . AND expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
 expressao -> expressao . OR expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On OR shift to state 42
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On EQUALS shift to state 52
--- On ENTAO shift to state 84
--- On DIV shift to state 34
--- On DIFER shift to state 54
--- On AND shift to state 57
-
-State 84:
-comando_se -> IF expressao ENTAO . nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On IF shift to state 82
--- On ID shift to state 24
--- On FOR shift to state 85
--- On ENTRADA shift to state 92
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 114
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 111
--- On chamada shift to state 113
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On ENTAO shift to state 85
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
 
 State 85:
-comando_for -> FOR . variavel BEGIN expressao END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On ID shift to state 68
--- On variavel shift to state 86
+comando_se -> IF expressao ENTAO . nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On WHILE shift to state 19
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On FOR shift to state 86
+-- On ENTRADA shift to state 93
+-- On variavel shift to state 97
+-- On nonempty_list(comando) shift to state 115
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 112
+-- On chamada shift to state 114
 
 State 86:
-comando_for -> FOR variavel . BEGIN expressao END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On BEGIN shift to state 87
+comando_for -> FOR . variavel BEGIN expressao END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On ID shift to state 69
+-- On variavel shift to state 87
 
 State 87:
+comando_for -> FOR variavel . BEGIN expressao END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On BEGIN shift to state 88
+
+State 88:
 comando_for -> FOR variavel BEGIN . expressao END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 88
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 89
+-- On chamada shift to state 34
 
-State 88:
+State 89:
 comando_for -> FOR variavel BEGIN expressao . END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS END DIV DIFER AND ]
 expressao -> expressao . MENOS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS END DIV DIFER AND ]
@@ -1960,35 +2025,36 @@ expressao -> expressao . EQUALS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE 
 expressao -> expressao . DIFER expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS END DIV DIFER AND ]
 expressao -> expressao . AND expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS END DIV DIFER AND ]
 expressao -> expressao . OR expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS END DIV DIFER AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On OR shift to state 42
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On EQUALS shift to state 52
--- On END shift to state 89
--- On DIV shift to state 34
--- On DIFER shift to state 54
--- On AND shift to state 57
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On END shift to state 90
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
 
-State 89:
+State 90:
 comando_for -> FOR variavel BEGIN expressao END . expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 90
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 91
+-- On chamada shift to state 34
 
-State 90:
+State 91:
 comando_for -> FOR variavel BEGIN expressao END expressao . DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
 expressao -> expressao . MENOS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
@@ -2004,70 +2070,71 @@ expressao -> expressao . EQUALS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE 
 expressao -> expressao . DIFER expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
 expressao -> expressao . AND expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
 expressao -> expressao . OR expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On OR shift to state 42
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On EQUALS shift to state 52
--- On DO shift to state 91
--- On DIV shift to state 34
--- On DIFER shift to state 54
--- On AND shift to state 57
-
-State 91:
-comando_for -> FOR variavel BEGIN expressao END expressao DO . nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On IF shift to state 82
--- On ID shift to state 24
--- On FOR shift to state 85
--- On ENTRADA shift to state 92
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 99
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 111
--- On chamada shift to state 113
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DO shift to state 92
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
 
 State 92:
-comando_entrada -> ENTRADA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On APAR shift to state 93
+comando_for -> FOR variavel BEGIN expressao END expressao DO . nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On WHILE shift to state 19
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On FOR shift to state 86
+-- On ENTRADA shift to state 93
+-- On variavel shift to state 97
+-- On nonempty_list(comando) shift to state 100
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 112
+-- On chamada shift to state 114
 
 State 93:
+comando_entrada -> ENTRADA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On APAR shift to state 94
+
+State 94:
 comando_entrada -> ENTRADA APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On separated_nonempty_list(VIRG,expressao) shift to state 94
--- On expressao shift to state 61
--- On chamada shift to state 33
-
-State 94:
-comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On FPAR shift to state 95
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On separated_nonempty_list(VIRG,expressao) shift to state 95
+-- On expressao shift to state 62
+-- On chamada shift to state 34
 
 State 95:
+comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) . FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On FPAR shift to state 96
+
+State 96:
 comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
 -- On SWITCH reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
@@ -2088,23 +2155,24 @@ comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR . [
 -- On CASE_DEFAULT reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
 -- On CASE reduce production comando_entrada -> ENTRADA APAR separated_nonempty_list(VIRG,expressao) FPAR 
 
-State 96:
-comando_atribuicao -> variavel . ATRIB expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On ATRIB shift to state 97
-
 State 97:
+comando_atribuicao -> variavel . ATRIB expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On ATRIB shift to state 98
+
+State 98:
 comando_atribuicao -> variavel ATRIB . expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On MENOS shift to state 20
 -- On LITSTRING shift to state 21
 -- On LITINT shift to state 22
 -- On LITCHAR shift to state 23
--- On ID shift to state 24
--- On APAR shift to state 26
--- On variavel shift to state 27
--- On expressao shift to state 98
--- On chamada shift to state 33
+-- On LITBOOL shift to state 24
+-- On ID shift to state 25
+-- On APAR shift to state 27
+-- On variavel shift to state 28
+-- On expressao shift to state 99
+-- On chamada shift to state 34
 
-State 98:
+State 99:
 comando_atribuicao -> variavel ATRIB expressao . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 expressao -> expressao . MAIS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . MENOS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
@@ -2120,20 +2188,20 @@ expressao -> expressao . EQUALS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETUR
 expressao -> expressao . DIFER expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . AND expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
 expressao -> expressao . OR expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
--- On RESTO shift to state 29
--- On POTEN shift to state 36
--- On OR shift to state 42
--- On MULTI shift to state 31
--- On MENOS shift to state 38
--- On MAIS shift to state 40
--- On LTE shift to state 44
--- On LT shift to state 46
--- On GTE shift to state 48
--- On GT shift to state 50
--- On EQUALS shift to state 52
--- On DIV shift to state 34
--- On DIFER shift to state 54
--- On AND shift to state 57
+-- On RESTO shift to state 30
+-- On POTEN shift to state 37
+-- On OR shift to state 43
+-- On MULTI shift to state 32
+-- On MENOS shift to state 39
+-- On MAIS shift to state 41
+-- On LTE shift to state 45
+-- On LT shift to state 47
+-- On GTE shift to state 49
+-- On GT shift to state 51
+-- On EQUALS shift to state 53
+-- On DIV shift to state 35
+-- On DIFER shift to state 55
+-- On AND shift to state 58
 -- On WHILE reduce production comando_atribuicao -> variavel ATRIB expressao 
 -- On SWITCH reduce production comando_atribuicao -> variavel ATRIB expressao 
 -- On SAIDA_LINHA reduce production comando_atribuicao -> variavel ATRIB expressao 
@@ -2153,11 +2221,11 @@ expressao -> expressao . OR expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RE
 -- On CASE_DEFAULT reduce production comando_atribuicao -> variavel ATRIB expressao 
 -- On CASE reduce production comando_atribuicao -> variavel ATRIB expressao 
 
-State 99:
-comando_for -> FOR variavel BEGIN expressao END expressao DO nonempty_list(comando) . FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On FFOR shift to state 100
-
 State 100:
+comando_for -> FOR variavel BEGIN expressao END expressao DO nonempty_list(comando) . FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On FFOR shift to state 101
+
+State 101:
 comando_for -> FOR variavel BEGIN expressao END expressao DO nonempty_list(comando) FFOR . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando_for -> FOR variavel BEGIN expressao END expressao DO nonempty_list(comando) FFOR 
 -- On SWITCH reduce production comando_for -> FOR variavel BEGIN expressao END expressao DO nonempty_list(comando) FFOR 
@@ -2178,7 +2246,7 @@ comando_for -> FOR variavel BEGIN expressao END expressao DO nonempty_list(coman
 -- On CASE_DEFAULT reduce production comando_for -> FOR variavel BEGIN expressao END expressao DO nonempty_list(comando) FFOR 
 -- On CASE reduce production comando_for -> FOR variavel BEGIN expressao END expressao DO nonempty_list(comando) FFOR 
 
-State 101:
+State 102:
 comando -> comando_switch . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_switch 
 -- On SWITCH reduce production comando -> comando_switch 
@@ -2199,7 +2267,7 @@ comando -> comando_switch . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE
 -- On CASE_DEFAULT reduce production comando -> comando_switch 
 -- On CASE reduce production comando -> comando_switch 
 
-State 102:
+State 103:
 comando -> comando_se . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_se 
 -- On SWITCH reduce production comando -> comando_se 
@@ -2220,7 +2288,7 @@ comando -> comando_se . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSW
 -- On CASE_DEFAULT reduce production comando -> comando_se 
 -- On CASE reduce production comando -> comando_se 
 
-State 103:
+State 104:
 comando -> comando_saida_l . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_saida_l 
 -- On SWITCH reduce production comando -> comando_saida_l 
@@ -2241,7 +2309,7 @@ comando -> comando_saida_l . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHIL
 -- On CASE_DEFAULT reduce production comando -> comando_saida_l 
 -- On CASE reduce production comando -> comando_saida_l 
 
-State 104:
+State 105:
 comando -> comando_saida . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_saida 
 -- On SWITCH reduce production comando -> comando_saida 
@@ -2262,7 +2330,7 @@ comando -> comando_saida . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE 
 -- On CASE_DEFAULT reduce production comando -> comando_saida 
 -- On CASE reduce production comando -> comando_saida 
 
-State 105:
+State 106:
 comando -> comando_return . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_return 
 -- On SWITCH reduce production comando -> comando_return 
@@ -2283,7 +2351,7 @@ comando -> comando_return . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE
 -- On CASE_DEFAULT reduce production comando -> comando_return 
 -- On CASE reduce production comando -> comando_return 
 
-State 106:
+State 107:
 comando -> comando_for . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_for 
 -- On SWITCH reduce production comando -> comando_for 
@@ -2304,7 +2372,7 @@ comando -> comando_for . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FS
 -- On CASE_DEFAULT reduce production comando -> comando_for 
 -- On CASE reduce production comando -> comando_for 
 
-State 107:
+State 108:
 comando -> comando_entrada . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_entrada 
 -- On SWITCH reduce production comando -> comando_entrada 
@@ -2325,7 +2393,7 @@ comando -> comando_entrada . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHIL
 -- On CASE_DEFAULT reduce production comando -> comando_entrada 
 -- On CASE reduce production comando -> comando_entrada 
 
-State 108:
+State 109:
 comando -> comando_enquanto . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_enquanto 
 -- On SWITCH reduce production comando -> comando_enquanto 
@@ -2346,7 +2414,7 @@ comando -> comando_enquanto . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHI
 -- On CASE_DEFAULT reduce production comando -> comando_enquanto 
 -- On CASE reduce production comando -> comando_enquanto 
 
-State 109:
+State 110:
 comando -> comando_chamada . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_chamada 
 -- On SWITCH reduce production comando -> comando_chamada 
@@ -2367,7 +2435,7 @@ comando -> comando_chamada . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHIL
 -- On CASE_DEFAULT reduce production comando -> comando_chamada 
 -- On CASE reduce production comando -> comando_chamada 
 
-State 110:
+State 111:
 comando -> comando_atribuicao . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando -> comando_atribuicao 
 -- On SWITCH reduce production comando -> comando_atribuicao 
@@ -2388,32 +2456,32 @@ comando -> comando_atribuicao . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FW
 -- On CASE_DEFAULT reduce production comando -> comando_atribuicao 
 -- On CASE reduce production comando -> comando_atribuicao 
 
-State 111:
+State 112:
 nonempty_list(comando) -> comando . [ FWHILE FSWITCH FIF FFOR ELSE CASE_DEFAULT CASE ]
 nonempty_list(comando) -> comando . nonempty_list(comando) [ FWHILE FSWITCH FIF FFOR ELSE CASE_DEFAULT CASE ]
 -- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On IF shift to state 82
--- On ID shift to state 24
--- On FOR shift to state 85
--- On ENTRADA shift to state 92
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 112
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 111
--- On chamada shift to state 113
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On FOR shift to state 86
+-- On ENTRADA shift to state 93
+-- On variavel shift to state 97
+-- On nonempty_list(comando) shift to state 113
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 112
+-- On chamada shift to state 114
 -- On FWHILE reduce production nonempty_list(comando) -> comando 
 -- On FSWITCH reduce production nonempty_list(comando) -> comando 
 -- On FIF reduce production nonempty_list(comando) -> comando 
@@ -2422,7 +2490,7 @@ nonempty_list(comando) -> comando . nonempty_list(comando) [ FWHILE FSWITCH FIF 
 -- On CASE_DEFAULT reduce production nonempty_list(comando) -> comando 
 -- On CASE reduce production nonempty_list(comando) -> comando 
 
-State 112:
+State 113:
 nonempty_list(comando) -> comando nonempty_list(comando) . [ FWHILE FSWITCH FIF FFOR ELSE CASE_DEFAULT CASE ]
 -- On FWHILE reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
 -- On FSWITCH reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
@@ -2432,7 +2500,7 @@ nonempty_list(comando) -> comando nonempty_list(comando) . [ FWHILE FSWITCH FIF 
 -- On CASE_DEFAULT reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
 -- On CASE reduce production nonempty_list(comando) -> comando nonempty_list(comando) 
 
-State 113:
+State 114:
 comando_chamada -> chamada . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando_chamada -> chamada 
 -- On SWITCH reduce production comando_chamada -> chamada 
@@ -2453,47 +2521,47 @@ comando_chamada -> chamada . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHIL
 -- On CASE_DEFAULT reduce production comando_chamada -> chamada 
 -- On CASE reduce production comando_chamada -> chamada 
 
-State 114:
+State 115:
 comando_se -> IF expressao ENTAO nonempty_list(comando) . option(__anonymous_0) FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On ELSE shift to state 115
--- On option(__anonymous_0) shift to state 117
+-- On ELSE shift to state 116
+-- On option(__anonymous_0) shift to state 118
 -- On FIF reduce production option(__anonymous_0) -> 
 
-State 115:
+State 116:
 option(__anonymous_0) -> ELSE . nonempty_list(comando) [ FIF ]
 -- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On IF shift to state 82
--- On ID shift to state 24
--- On FOR shift to state 85
--- On ENTRADA shift to state 92
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 116
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 111
--- On chamada shift to state 113
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On FOR shift to state 86
+-- On ENTRADA shift to state 93
+-- On variavel shift to state 97
+-- On nonempty_list(comando) shift to state 117
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 112
+-- On chamada shift to state 114
 
-State 116:
+State 117:
 option(__anonymous_0) -> ELSE nonempty_list(comando) . [ FIF ]
 -- On FIF reduce production option(__anonymous_0) -> ELSE nonempty_list(comando) 
 
-State 117:
-comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) . FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On FIF shift to state 118
-
 State 118:
+comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) . FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On FIF shift to state 119
+
+State 119:
 comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
 -- On SWITCH reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
@@ -2514,54 +2582,54 @@ comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FI
 -- On CASE_DEFAULT reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
 -- On CASE reduce production comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF 
 
-State 119:
+State 120:
 caso -> CASE expressao nonempty_list(comando) . [ FSWITCH CASE_DEFAULT CASE ]
 -- On FSWITCH reduce production caso -> CASE expressao nonempty_list(comando) 
 -- On CASE_DEFAULT reduce production caso -> CASE expressao nonempty_list(comando) 
 -- On CASE reduce production caso -> CASE expressao nonempty_list(comando) 
 
-State 120:
+State 121:
 comando_switch -> SWITCH variavel nonempty_list(caso) . option(default) FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On CASE_DEFAULT shift to state 121
--- On option(default) shift to state 123
--- On default shift to state 125
+-- On CASE_DEFAULT shift to state 122
+-- On option(default) shift to state 124
+-- On default shift to state 126
 -- On FSWITCH reduce production option(default) -> 
 
-State 121:
+State 122:
 default -> CASE_DEFAULT . nonempty_list(comando) [ FSWITCH ]
 -- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On IF shift to state 82
--- On ID shift to state 24
--- On FOR shift to state 85
--- On ENTRADA shift to state 92
--- On variavel shift to state 96
--- On nonempty_list(comando) shift to state 122
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 111
--- On chamada shift to state 113
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On FOR shift to state 86
+-- On ENTRADA shift to state 93
+-- On variavel shift to state 97
+-- On nonempty_list(comando) shift to state 123
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 112
+-- On chamada shift to state 114
 
-State 122:
+State 123:
 default -> CASE_DEFAULT nonempty_list(comando) . [ FSWITCH ]
 -- On FSWITCH reduce production default -> CASE_DEFAULT nonempty_list(comando) 
 
-State 123:
-comando_switch -> SWITCH variavel nonempty_list(caso) option(default) . FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On FSWITCH shift to state 124
-
 State 124:
+comando_switch -> SWITCH variavel nonempty_list(caso) option(default) . FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On FSWITCH shift to state 125
+
+State 125:
 comando_switch -> SWITCH variavel nonempty_list(caso) option(default) FSWITCH . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando_switch -> SWITCH variavel nonempty_list(caso) option(default) FSWITCH 
 -- On SWITCH reduce production comando_switch -> SWITCH variavel nonempty_list(caso) option(default) FSWITCH 
@@ -2582,29 +2650,29 @@ comando_switch -> SWITCH variavel nonempty_list(caso) option(default) FSWITCH . 
 -- On CASE_DEFAULT reduce production comando_switch -> SWITCH variavel nonempty_list(caso) option(default) FSWITCH 
 -- On CASE reduce production comando_switch -> SWITCH variavel nonempty_list(caso) option(default) FSWITCH 
 
-State 125:
+State 126:
 option(default) -> default . [ FSWITCH ]
 -- On FSWITCH reduce production option(default) -> default 
 
-State 126:
+State 127:
 nonempty_list(caso) -> caso . [ FSWITCH CASE_DEFAULT ]
 nonempty_list(caso) -> caso . nonempty_list(caso) [ FSWITCH CASE_DEFAULT ]
--- On CASE shift to state 70
--- On nonempty_list(caso) shift to state 127
--- On caso shift to state 126
+-- On CASE shift to state 71
+-- On nonempty_list(caso) shift to state 128
+-- On caso shift to state 127
 -- On FSWITCH reduce production nonempty_list(caso) -> caso 
 -- On CASE_DEFAULT reduce production nonempty_list(caso) -> caso 
 
-State 127:
+State 128:
 nonempty_list(caso) -> caso nonempty_list(caso) . [ FSWITCH CASE_DEFAULT ]
 -- On FSWITCH reduce production nonempty_list(caso) -> caso nonempty_list(caso) 
 -- On CASE_DEFAULT reduce production nonempty_list(caso) -> caso nonempty_list(caso) 
 
-State 128:
-comando_enquanto -> WHILE expressao DO nonempty_list(comando) . FWHILE [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
--- On FWHILE shift to state 129
-
 State 129:
+comando_enquanto -> WHILE expressao DO nonempty_list(comando) . FWHILE [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
+-- On FWHILE shift to state 130
+
+State 130:
 comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 -- On WHILE reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
 -- On SWITCH reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
@@ -2625,152 +2693,152 @@ comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE . [ WHILE S
 -- On CASE_DEFAULT reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
 -- On CASE reduce production comando_enquanto -> WHILE expressao DO nonempty_list(comando) FWHILE 
 
-State 130:
-prog -> PROGRAMA LITSTRING declaracao INI list(comando) . FPROGRAMA list(decFunctions) EOF [ # ]
--- On FPROGRAMA shift to state 131
-
 State 131:
-prog -> PROGRAMA LITSTRING declaracao INI list(comando) FPROGRAMA . list(decFunctions) EOF [ # ]
--- On FUNCTION shift to state 132
--- On list(decFunctions) shift to state 146
--- On decFunctions shift to state 148
--- On EOF reduce production list(decFunctions) -> 
+prog -> PROGRAMA LITSTRING declaracao INI list(comando) . FPROGRAMA list(decFunctions) EOF [ # ]
+-- On FPROGRAMA shift to state 132
 
 State 132:
-decFunctions -> FUNCTION . ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
--- On ID shift to state 133
+prog -> PROGRAMA LITSTRING declaracao INI list(comando) FPROGRAMA . list(decFunctions) EOF [ # ]
+-- On FUNCTION shift to state 133
+-- On list(decFunctions) shift to state 147
+-- On decFunctions shift to state 149
+-- On EOF reduce production list(decFunctions) -> 
 
 State 133:
-decFunctions -> FUNCTION ID . APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
--- On APAR shift to state 134
+decFunctions -> FUNCTION . ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
+-- On ID shift to state 134
 
 State 134:
+decFunctions -> FUNCTION ID . APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
+-- On APAR shift to state 135
+
+State 135:
 decFunctions -> FUNCTION ID APAR . list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 -- On ID shift to state 4
 -- On variaveis shift to state 7
 -- On separated_nonempty_list(VIRG,ID) shift to state 8
--- On list(variaveis) shift to state 135
+-- On list(variaveis) shift to state 136
 -- On FPAR reduce production list(variaveis) -> 
 
-State 135:
-decFunctions -> FUNCTION ID APAR list(variaveis) . FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
--- On FPAR shift to state 136
-
 State 136:
-decFunctions -> FUNCTION ID APAR list(variaveis) FPAR . DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
--- On DEF shift to state 137
+decFunctions -> FUNCTION ID APAR list(variaveis) . FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
+-- On FPAR shift to state 137
 
 State 137:
+decFunctions -> FUNCTION ID APAR list(variaveis) FPAR . DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
+-- On DEF shift to state 138
+
+State 138:
 decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF . tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 -- On REAL shift to state 10
 -- On INTEGER shift to state 11
 -- On CARACTER shift to state 12
 -- On BOOL shift to state 13
--- On tipo shift to state 138
-
-State 138:
-decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo . declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
--- On VAR shift to state 3
--- On declaracao shift to state 139
--- On INI reduce production declaracao -> 
+-- On tipo shift to state 139
 
 State 139:
-decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao . INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
--- On INI shift to state 140
+decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo . declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
+-- On VAR shift to state 3
+-- On declaracao shift to state 140
+-- On INI reduce production declaracao -> 
 
 State 140:
-decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI . list(comando) FFUNCTION ID [ FUNCTION EOF ]
--- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On IF shift to state 82
--- On ID shift to state 24
--- On FOR shift to state 85
--- On ENTRADA shift to state 92
--- On variavel shift to state 96
--- On list(comando) shift to state 141
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 144
--- On chamada shift to state 113
--- On FFUNCTION reduce production list(comando) -> 
+decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao . INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
+-- On INI shift to state 141
 
 State 141:
-decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) . FFUNCTION ID [ FUNCTION EOF ]
--- On FFUNCTION shift to state 142
+decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI . list(comando) FFUNCTION ID [ FUNCTION EOF ]
+-- On WHILE shift to state 19
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On FOR shift to state 86
+-- On ENTRADA shift to state 93
+-- On variavel shift to state 97
+-- On list(comando) shift to state 142
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 145
+-- On chamada shift to state 114
+-- On FFUNCTION reduce production list(comando) -> 
 
 State 142:
-decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION . ID [ FUNCTION EOF ]
--- On ID shift to state 143
+decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) . FFUNCTION ID [ FUNCTION EOF ]
+-- On FFUNCTION shift to state 143
 
 State 143:
+decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION . ID [ FUNCTION EOF ]
+-- On ID shift to state 144
+
+State 144:
 decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID . [ FUNCTION EOF ]
 -- On FUNCTION reduce production decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID 
 -- On EOF reduce production decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID 
 
-State 144:
+State 145:
 list(comando) -> comando . list(comando) [ FPROGRAMA FFUNCTION ]
 -- On WHILE shift to state 19
--- On SWITCH shift to state 67
--- On SAIDA_LINHA shift to state 72
--- On SAIDA shift to state 76
--- On RETURN shift to state 80
--- On IF shift to state 82
--- On ID shift to state 24
--- On FOR shift to state 85
--- On ENTRADA shift to state 92
--- On variavel shift to state 96
--- On list(comando) shift to state 145
--- On comando_switch shift to state 101
--- On comando_se shift to state 102
--- On comando_saida_l shift to state 103
--- On comando_saida shift to state 104
--- On comando_return shift to state 105
--- On comando_for shift to state 106
--- On comando_entrada shift to state 107
--- On comando_enquanto shift to state 108
--- On comando_chamada shift to state 109
--- On comando_atribuicao shift to state 110
--- On comando shift to state 144
--- On chamada shift to state 113
+-- On SWITCH shift to state 68
+-- On SAIDA_LINHA shift to state 73
+-- On SAIDA shift to state 77
+-- On RETURN shift to state 81
+-- On IF shift to state 83
+-- On ID shift to state 25
+-- On FOR shift to state 86
+-- On ENTRADA shift to state 93
+-- On variavel shift to state 97
+-- On list(comando) shift to state 146
+-- On comando_switch shift to state 102
+-- On comando_se shift to state 103
+-- On comando_saida_l shift to state 104
+-- On comando_saida shift to state 105
+-- On comando_return shift to state 106
+-- On comando_for shift to state 107
+-- On comando_entrada shift to state 108
+-- On comando_enquanto shift to state 109
+-- On comando_chamada shift to state 110
+-- On comando_atribuicao shift to state 111
+-- On comando shift to state 145
+-- On chamada shift to state 114
 -- On FPROGRAMA reduce production list(comando) -> 
 -- On FFUNCTION reduce production list(comando) -> 
 
-State 145:
+State 146:
 list(comando) -> comando list(comando) . [ FPROGRAMA FFUNCTION ]
 -- On FPROGRAMA reduce production list(comando) -> comando list(comando) 
 -- On FFUNCTION reduce production list(comando) -> comando list(comando) 
 
-State 146:
-prog -> PROGRAMA LITSTRING declaracao INI list(comando) FPROGRAMA list(decFunctions) . EOF [ # ]
--- On EOF shift to state 147
-
 State 147:
+prog -> PROGRAMA LITSTRING declaracao INI list(comando) FPROGRAMA list(decFunctions) . EOF [ # ]
+-- On EOF shift to state 148
+
+State 148:
 prog -> PROGRAMA LITSTRING declaracao INI list(comando) FPROGRAMA list(decFunctions) EOF . [ # ]
 -- On # reduce production prog -> PROGRAMA LITSTRING declaracao INI list(comando) FPROGRAMA list(decFunctions) EOF 
 
-State 148:
+State 149:
 list(decFunctions) -> decFunctions . list(decFunctions) [ EOF ]
--- On FUNCTION shift to state 132
--- On list(decFunctions) shift to state 149
--- On decFunctions shift to state 148
+-- On FUNCTION shift to state 133
+-- On list(decFunctions) shift to state 150
+-- On decFunctions shift to state 149
 -- On EOF reduce production list(decFunctions) -> 
 
-State 149:
+State 150:
 list(decFunctions) -> decFunctions list(decFunctions) . [ EOF ]
 -- On EOF reduce production list(decFunctions) -> decFunctions list(decFunctions) 
 
-State 150:
+State 151:
 prog' -> prog . [ # ]
 -- On # accept prog
 

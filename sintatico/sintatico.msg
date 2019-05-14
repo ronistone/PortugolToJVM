@@ -1,6 +1,6 @@
 prog: PROGRAMA LITSTRING INI ENTRADA APAR WHILE 
 ##
-## Ends in an error in state: 93.
+## Ends in an error in state: 94.
 ##
 ## comando_entrada -> ENTRADA APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -8,11 +8,11 @@ prog: PROGRAMA LITSTRING INI ENTRADA APAR WHILE
 ## ENTRADA APAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Palavras reservadas não podem ser utilizadas dentro de um comando
 
 prog: PROGRAMA LITSTRING INI ENTRADA WHILE 
 ##
-## Ends in an error in state: 92.
+## Ends in an error in state: 93.
 ##
 ## comando_entrada -> ENTRADA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -20,11 +20,11 @@ prog: PROGRAMA LITSTRING INI ENTRADA WHILE
 ## ENTRADA 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Parenteses não aberto.
 
 prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING END LITSTRING DO RETURN ID FWHILE 
 ##
-## Ends in an error in state: 99.
+## Ends in an error in state: 100.
 ##
 ## comando_for -> FOR variavel BEGIN expressao END expressao DO nonempty_list(comando) . FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -35,18 +35,18 @@ prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING END LITSTRING DO RETURN ID F
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 24, spurious reduction of production variavel -> ID 
-## In state 27, spurious reduction of production expressao -> variavel 
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
-## In state 111, spurious reduction of production nonempty_list(comando) -> comando 
+## In state 25, spurious reduction of production variavel -> ID 
+## In state 28, spurious reduction of production expressao -> variavel 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
+## In state 112, spurious reduction of production nonempty_list(comando) -> comando 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Comando inválido no fim.
 
 prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING END LITSTRING DO VIRG 
 ##
-## Ends in an error in state: 91.
+## Ends in an error in state: 92.
 ##
 ## comando_for -> FOR variavel BEGIN expressao END expressao DO . nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -54,11 +54,11 @@ prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING END LITSTRING DO VIRG
 ## FOR variavel BEGIN expressao END expressao DO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Comando inválido no inicio.
 
 prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING END LITSTRING WHILE 
 ##
-## Ends in an error in state: 90.
+## Ends in an error in state: 91.
 ##
 ## comando_for -> FOR variavel BEGIN expressao END expressao . DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ## expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
@@ -80,11 +80,11 @@ prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING END LITSTRING WHILE
 ## FOR variavel BEGIN expressao END expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Expressão inválida utilizada no indice do para.
 
 prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING END WHILE 
 ##
-## Ends in an error in state: 89.
+## Ends in an error in state: 90.
 ##
 ## comando_for -> FOR variavel BEGIN expressao END . expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -96,7 +96,7 @@ prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING END WHILE
 
 prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING WHILE 
 ##
-## Ends in an error in state: 88.
+## Ends in an error in state: 89.
 ##
 ## comando_for -> FOR variavel BEGIN expressao . END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ## expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS END DIV DIFER AND ]
@@ -122,7 +122,7 @@ prog: PROGRAMA LITSTRING INI FOR ID BEGIN LITSTRING WHILE
 
 prog: PROGRAMA LITSTRING INI FOR ID BEGIN WHILE 
 ##
-## Ends in an error in state: 87.
+## Ends in an error in state: 88.
 ##
 ## comando_for -> FOR variavel BEGIN . expressao END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -134,7 +134,7 @@ prog: PROGRAMA LITSTRING INI FOR ID BEGIN WHILE
 
 prog: PROGRAMA LITSTRING INI FOR ID WHILE 
 ##
-## Ends in an error in state: 86.
+## Ends in an error in state: 87.
 ##
 ## comando_for -> FOR variavel . BEGIN expressao END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -146,7 +146,7 @@ prog: PROGRAMA LITSTRING INI FOR ID WHILE
 
 prog: PROGRAMA LITSTRING INI FOR WHILE 
 ##
-## Ends in an error in state: 85.
+## Ends in an error in state: 86.
 ##
 ## comando_for -> FOR . variavel BEGIN expressao END expressao DO nonempty_list(comando) FFOR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -158,7 +158,7 @@ prog: PROGRAMA LITSTRING INI FOR WHILE
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF BOOL INI FFUNCTION ID WHILE 
 ##
-## Ends in an error in state: 148.
+## Ends in an error in state: 149.
 ##
 ## list(decFunctions) -> decFunctions . list(decFunctions) [ EOF ]
 ##
@@ -166,11 +166,11 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF BOOL INI FFUNCT
 ## decFunctions 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Comando inválido, fora do escopo de uma função.
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL INI FFUNCTION WHILE 
 ##
-## Ends in an error in state: 142.
+## Ends in an error in state: 143.
 ##
 ## decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION . ID [ FUNCTION EOF ]
 ##
@@ -182,7 +182,7 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL INI FFUNCT
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL INI RETURN ID FPROGRAMA 
 ##
-## Ends in an error in state: 141.
+## Ends in an error in state: 142.
 ##
 ## decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) . FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -193,19 +193,19 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL INI RETURN
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 24, spurious reduction of production variavel -> ID 
-## In state 27, spurious reduction of production expressao -> variavel 
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
-## In state 144, spurious reduction of production list(comando) -> 
-## In state 145, spurious reduction of production list(comando) -> comando list(comando) 
+## In state 25, spurious reduction of production variavel -> ID 
+## In state 28, spurious reduction of production expressao -> variavel 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
+## In state 145, spurious reduction of production list(comando) -> 
+## In state 146, spurious reduction of production list(comando) -> comando list(comando) 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL INI VIRG 
 ##
-## Ends in an error in state: 140.
+## Ends in an error in state: 141.
 ##
 ## decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao INI . list(comando) FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -217,7 +217,7 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL INI VIRG
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL VAR ID DEF BOOL FPAR 
 ##
-## Ends in an error in state: 139.
+## Ends in an error in state: 140.
 ##
 ## decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo declaracao . INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -237,7 +237,7 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL VAR ID DEF
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL WHILE 
 ##
-## Ends in an error in state: 138.
+## Ends in an error in state: 139.
 ##
 ## decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF tipo . declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -249,7 +249,7 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF REAL WHILE
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF WHILE 
 ##
-## Ends in an error in state: 137.
+## Ends in an error in state: 138.
 ##
 ## decFunctions -> FUNCTION ID APAR list(variaveis) FPAR DEF . tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -261,7 +261,7 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR DEF WHILE
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR WHILE 
 ##
-## Ends in an error in state: 136.
+## Ends in an error in state: 137.
 ##
 ## decFunctions -> FUNCTION ID APAR list(variaveis) FPAR . DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -269,11 +269,11 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR FPAR WHILE
 ## FUNCTION ID APAR list(variaveis) FPAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Dois pontos é necessario para declaração do retorno da função
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR ID DEF BOOL INI 
 ##
-## Ends in an error in state: 135.
+## Ends in an error in state: 136.
 ##
 ## decFunctions -> FUNCTION ID APAR list(variaveis) . FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -288,11 +288,11 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR ID DEF BOOL INI
 ## In state 15, spurious reduction of production list(variaveis) -> variaveis list(variaveis) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Paranteses não fechado na função
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR WHILE 
 ##
-## Ends in an error in state: 134.
+## Ends in an error in state: 135.
 ##
 ## decFunctions -> FUNCTION ID APAR . list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -304,7 +304,7 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID APAR WHILE
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID WHILE 
 ##
-## Ends in an error in state: 133.
+## Ends in an error in state: 134.
 ##
 ## decFunctions -> FUNCTION ID . APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -316,7 +316,7 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION ID WHILE
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION WHILE 
 ##
-## Ends in an error in state: 132.
+## Ends in an error in state: 133.
 ##
 ## decFunctions -> FUNCTION . ID APAR list(variaveis) FPAR DEF tipo declaracao INI list(comando) FFUNCTION ID [ FUNCTION EOF ]
 ##
@@ -324,11 +324,11 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA FUNCTION WHILE
 ## FUNCTION 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Esperado o nome da função
 
 prog: PROGRAMA LITSTRING INI FPROGRAMA WHILE 
 ##
-## Ends in an error in state: 131.
+## Ends in an error in state: 132.
 ##
 ## prog -> PROGRAMA LITSTRING declaracao INI list(comando) FPROGRAMA . list(decFunctions) EOF [ # ]
 ##
@@ -336,11 +336,11 @@ prog: PROGRAMA LITSTRING INI FPROGRAMA WHILE
 ## PROGRAMA LITSTRING declaracao INI list(comando) FPROGRAMA 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Após o algoritmo pode-se apenas declarar funções
 
 prog: PROGRAMA LITSTRING INI ID APAR WHILE 
 ##
-## Ends in an error in state: 25.
+## Ends in an error in state: 26.
 ##
 ## chamada -> ID APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -348,11 +348,11 @@ prog: PROGRAMA LITSTRING INI ID APAR WHILE
 ## ID APAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Função parametro inválido para chamada da função
 
 prog: PROGRAMA LITSTRING INI ID ATRIB LITSTRING VIRG 
 ##
-## Ends in an error in state: 98.
+## Ends in an error in state: 99.
 ##
 ## comando_atribuicao -> variavel ATRIB expressao . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ## expressao -> expressao . MAIS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
@@ -378,7 +378,7 @@ prog: PROGRAMA LITSTRING INI ID ATRIB LITSTRING VIRG
 
 prog: PROGRAMA LITSTRING INI ID ATRIB WHILE 
 ##
-## Ends in an error in state: 97.
+## Ends in an error in state: 98.
 ##
 ## comando_atribuicao -> variavel ATRIB . expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -390,7 +390,7 @@ prog: PROGRAMA LITSTRING INI ID ATRIB WHILE
 
 prog: PROGRAMA LITSTRING INI ID VAR 
 ##
-## Ends in an error in state: 24.
+## Ends in an error in state: 25.
 ##
 ## chamada -> ID . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## variavel -> ID . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE ATRIB AND ]
@@ -403,7 +403,7 @@ prog: PROGRAMA LITSTRING INI ID VAR
 
 prog: PROGRAMA LITSTRING INI ID WHILE 
 ##
-## Ends in an error in state: 96.
+## Ends in an error in state: 97.
 ##
 ## comando_atribuicao -> variavel . ATRIB expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -414,14 +414,14 @@ prog: PROGRAMA LITSTRING INI ID WHILE
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 24, spurious reduction of production variavel -> ID 
+## In state 25, spurious reduction of production variavel -> ID 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 prog: PROGRAMA LITSTRING INI IF LITSTRING ENTAO RETURN ID ELSE RETURN ID FWHILE 
 ##
-## Ends in an error in state: 117.
+## Ends in an error in state: 118.
 ##
 ## comando_se -> IF expressao ENTAO nonempty_list(comando) option(__anonymous_0) . FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -432,19 +432,19 @@ prog: PROGRAMA LITSTRING INI IF LITSTRING ENTAO RETURN ID ELSE RETURN ID FWHILE
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 24, spurious reduction of production variavel -> ID 
-## In state 27, spurious reduction of production expressao -> variavel 
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
-## In state 111, spurious reduction of production nonempty_list(comando) -> comando 
-## In state 116, spurious reduction of production option(__anonymous_0) -> ELSE nonempty_list(comando) 
+## In state 25, spurious reduction of production variavel -> ID 
+## In state 28, spurious reduction of production expressao -> variavel 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
+## In state 112, spurious reduction of production nonempty_list(comando) -> comando 
+## In state 117, spurious reduction of production option(__anonymous_0) -> ELSE nonempty_list(comando) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Comando se não fechado
 
 prog: PROGRAMA LITSTRING INI IF LITSTRING ENTAO RETURN ID ELSE VIRG 
 ##
-## Ends in an error in state: 115.
+## Ends in an error in state: 116.
 ##
 ## option(__anonymous_0) -> ELSE . nonempty_list(comando) [ FIF ]
 ##
@@ -452,11 +452,11 @@ prog: PROGRAMA LITSTRING INI IF LITSTRING ENTAO RETURN ID ELSE VIRG
 ## ELSE 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Comando senão não pode ser vazio.
 
 prog: PROGRAMA LITSTRING INI IF LITSTRING ENTAO RETURN ID FWHILE 
 ##
-## Ends in an error in state: 114.
+## Ends in an error in state: 115.
 ##
 ## comando_se -> IF expressao ENTAO nonempty_list(comando) . option(__anonymous_0) FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -467,18 +467,18 @@ prog: PROGRAMA LITSTRING INI IF LITSTRING ENTAO RETURN ID FWHILE
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 24, spurious reduction of production variavel -> ID 
-## In state 27, spurious reduction of production expressao -> variavel 
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
-## In state 111, spurious reduction of production nonempty_list(comando) -> comando 
+## In state 25, spurious reduction of production variavel -> ID 
+## In state 28, spurious reduction of production expressao -> variavel 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
+## In state 112, spurious reduction of production nonempty_list(comando) -> comando 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+comando se não fechado.
 
 prog: PROGRAMA LITSTRING INI IF LITSTRING ENTAO VIRG 
 ##
-## Ends in an error in state: 84.
+## Ends in an error in state: 85.
 ##
 ## comando_se -> IF expressao ENTAO . nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -486,11 +486,11 @@ prog: PROGRAMA LITSTRING INI IF LITSTRING ENTAO VIRG
 ## IF expressao ENTAO 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Caracter inválido dentro do comando se.
 
 prog: PROGRAMA LITSTRING INI IF LITSTRING WHILE 
 ##
-## Ends in an error in state: 83.
+## Ends in an error in state: 84.
 ##
 ## comando_se -> IF expressao . ENTAO nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ## expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS ENTAO DIV DIFER AND ]
@@ -516,7 +516,7 @@ prog: PROGRAMA LITSTRING INI IF LITSTRING WHILE
 
 prog: PROGRAMA LITSTRING INI IF WHILE 
 ##
-## Ends in an error in state: 82.
+## Ends in an error in state: 83.
 ##
 ## comando_se -> IF . expressao ENTAO nonempty_list(comando) option(__anonymous_0) FIF [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -528,7 +528,7 @@ prog: PROGRAMA LITSTRING INI IF WHILE
 
 prog: PROGRAMA LITSTRING INI RETURN LITSTRING FFUNCTION 
 ##
-## Ends in an error in state: 130.
+## Ends in an error in state: 131.
 ##
 ## prog -> PROGRAMA LITSTRING declaracao INI list(comando) . FPROGRAMA list(decFunctions) EOF [ # ]
 ##
@@ -539,17 +539,17 @@ prog: PROGRAMA LITSTRING INI RETURN LITSTRING FFUNCTION
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
-## In state 144, spurious reduction of production list(comando) -> 
-## In state 145, spurious reduction of production list(comando) -> comando list(comando) 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
+## In state 145, spurious reduction of production list(comando) -> 
+## In state 146, spurious reduction of production list(comando) -> comando list(comando) 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 prog: PROGRAMA LITSTRING INI RETURN LITSTRING FWHILE 
 ##
-## Ends in an error in state: 144.
+## Ends in an error in state: 145.
 ##
 ## list(comando) -> comando . list(comando) [ FPROGRAMA FFUNCTION ]
 ##
@@ -560,15 +560,15 @@ prog: PROGRAMA LITSTRING INI RETURN LITSTRING FWHILE
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 prog: PROGRAMA LITSTRING INI RETURN LITSTRING VIRG 
 ##
-## Ends in an error in state: 81.
+## Ends in an error in state: 82.
 ##
 ## comando_return -> RETURN expressao . [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ## expressao -> expressao . MAIS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR EQUALS ENTRADA ELSE DIV DIFER CASE_DEFAULT CASE AND ]
@@ -594,7 +594,7 @@ prog: PROGRAMA LITSTRING INI RETURN LITSTRING VIRG
 
 prog: PROGRAMA LITSTRING INI RETURN WHILE 
 ##
-## Ends in an error in state: 80.
+## Ends in an error in state: 81.
 ##
 ## comando_return -> RETURN . expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -606,7 +606,7 @@ prog: PROGRAMA LITSTRING INI RETURN WHILE
 
 prog: PROGRAMA LITSTRING INI SAIDA APAR WHILE 
 ##
-## Ends in an error in state: 77.
+## Ends in an error in state: 78.
 ##
 ## comando_saida -> SAIDA APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -618,7 +618,7 @@ prog: PROGRAMA LITSTRING INI SAIDA APAR WHILE
 
 prog: PROGRAMA LITSTRING INI SAIDA WHILE 
 ##
-## Ends in an error in state: 76.
+## Ends in an error in state: 77.
 ##
 ## comando_saida -> SAIDA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -630,7 +630,7 @@ prog: PROGRAMA LITSTRING INI SAIDA WHILE
 
 prog: PROGRAMA LITSTRING INI SAIDA_LINHA APAR LITSTRING VIRG WHILE 
 ##
-## Ends in an error in state: 62.
+## Ends in an error in state: 63.
 ##
 ## separated_nonempty_list(VIRG,expressao) -> expressao VIRG . separated_nonempty_list(VIRG,expressao) [ FPAR ]
 ##
@@ -642,7 +642,7 @@ prog: PROGRAMA LITSTRING INI SAIDA_LINHA APAR LITSTRING VIRG WHILE
 
 prog: PROGRAMA LITSTRING INI SAIDA_LINHA APAR LITSTRING WHILE 
 ##
-## Ends in an error in state: 61.
+## Ends in an error in state: 62.
 ##
 ## expressao -> expressao . MAIS expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
 ## expressao -> expressao . MENOS expressao [ VIRG RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
@@ -669,7 +669,7 @@ prog: PROGRAMA LITSTRING INI SAIDA_LINHA APAR LITSTRING WHILE
 
 prog: PROGRAMA LITSTRING INI SAIDA_LINHA APAR WHILE 
 ##
-## Ends in an error in state: 73.
+## Ends in an error in state: 74.
 ##
 ## comando_saida_l -> SAIDA_LINHA APAR . separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -681,7 +681,7 @@ prog: PROGRAMA LITSTRING INI SAIDA_LINHA APAR WHILE
 
 prog: PROGRAMA LITSTRING INI SAIDA_LINHA WHILE 
 ##
-## Ends in an error in state: 72.
+## Ends in an error in state: 73.
 ##
 ## comando_saida_l -> SAIDA_LINHA . APAR separated_nonempty_list(VIRG,expressao) FPAR [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -693,7 +693,7 @@ prog: PROGRAMA LITSTRING INI SAIDA_LINHA WHILE
 
 prog: PROGRAMA LITSTRING INI SWITCH ID CASE LITSTRING RETURN LITSTRING CASE_DEFAULT RETURN ID FWHILE 
 ##
-## Ends in an error in state: 123.
+## Ends in an error in state: 124.
 ##
 ## comando_switch -> SWITCH variavel nonempty_list(caso) option(default) . FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -704,20 +704,20 @@ prog: PROGRAMA LITSTRING INI SWITCH ID CASE LITSTRING RETURN LITSTRING CASE_DEFA
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 24, spurious reduction of production variavel -> ID 
-## In state 27, spurious reduction of production expressao -> variavel 
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
-## In state 111, spurious reduction of production nonempty_list(comando) -> comando 
-## In state 122, spurious reduction of production default -> CASE_DEFAULT nonempty_list(comando) 
-## In state 125, spurious reduction of production option(default) -> default 
+## In state 25, spurious reduction of production variavel -> ID 
+## In state 28, spurious reduction of production expressao -> variavel 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
+## In state 112, spurious reduction of production nonempty_list(comando) -> comando 
+## In state 123, spurious reduction of production default -> CASE_DEFAULT nonempty_list(comando) 
+## In state 126, spurious reduction of production option(default) -> default 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 prog: PROGRAMA LITSTRING INI SWITCH ID CASE LITSTRING RETURN LITSTRING CASE_DEFAULT VIRG 
 ##
-## Ends in an error in state: 121.
+## Ends in an error in state: 122.
 ##
 ## default -> CASE_DEFAULT . nonempty_list(comando) [ FSWITCH ]
 ##
@@ -729,7 +729,7 @@ prog: PROGRAMA LITSTRING INI SWITCH ID CASE LITSTRING RETURN LITSTRING CASE_DEFA
 
 prog: PROGRAMA LITSTRING INI SWITCH ID CASE LITSTRING RETURN LITSTRING FWHILE 
 ##
-## Ends in an error in state: 126.
+## Ends in an error in state: 127.
 ##
 ## nonempty_list(caso) -> caso . [ FSWITCH CASE_DEFAULT ]
 ## nonempty_list(caso) -> caso . nonempty_list(caso) [ FSWITCH CASE_DEFAULT ]
@@ -741,17 +741,17 @@ prog: PROGRAMA LITSTRING INI SWITCH ID CASE LITSTRING RETURN LITSTRING FWHILE
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
-## In state 111, spurious reduction of production nonempty_list(comando) -> comando 
-## In state 119, spurious reduction of production caso -> CASE expressao nonempty_list(comando) 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
+## In state 112, spurious reduction of production nonempty_list(comando) -> comando 
+## In state 120, spurious reduction of production caso -> CASE expressao nonempty_list(comando) 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 prog: PROGRAMA LITSTRING INI SWITCH ID CASE LITSTRING VIRG 
 ##
-## Ends in an error in state: 71.
+## Ends in an error in state: 72.
 ##
 ## caso -> CASE expressao . nonempty_list(comando) [ FSWITCH CASE_DEFAULT CASE ]
 ## expressao -> expressao . MAIS expressao [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FOR EQUALS ENTRADA DIV DIFER AND ]
@@ -777,7 +777,7 @@ prog: PROGRAMA LITSTRING INI SWITCH ID CASE LITSTRING VIRG
 
 prog: PROGRAMA LITSTRING INI SWITCH ID CASE WHILE 
 ##
-## Ends in an error in state: 70.
+## Ends in an error in state: 71.
 ##
 ## caso -> CASE . expressao nonempty_list(comando) [ FSWITCH CASE_DEFAULT CASE ]
 ##
@@ -789,7 +789,7 @@ prog: PROGRAMA LITSTRING INI SWITCH ID CASE WHILE
 
 prog: PROGRAMA LITSTRING INI SWITCH ID WHILE 
 ##
-## Ends in an error in state: 69.
+## Ends in an error in state: 70.
 ##
 ## comando_switch -> SWITCH variavel . nonempty_list(caso) option(default) FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -801,7 +801,7 @@ prog: PROGRAMA LITSTRING INI SWITCH ID WHILE
 
 prog: PROGRAMA LITSTRING INI SWITCH WHILE 
 ##
-## Ends in an error in state: 67.
+## Ends in an error in state: 68.
 ##
 ## comando_switch -> SWITCH . variavel nonempty_list(caso) option(default) FSWITCH [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -821,11 +821,11 @@ prog: PROGRAMA LITSTRING INI VIRG
 ## PROGRAMA LITSTRING declaracao INI 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Caracter inválido no inicio do algoritmo
 
 prog: PROGRAMA LITSTRING INI WHILE APAR LITSTRING WHILE 
 ##
-## Ends in an error in state: 28.
+## Ends in an error in state: 29.
 ##
 ## expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
 ## expressao -> expressao . MENOS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT FPAR EQUALS DIV DIFER AND ]
@@ -847,11 +847,11 @@ prog: PROGRAMA LITSTRING INI WHILE APAR LITSTRING WHILE
 ## APAR expressao 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Comando inválido para expressão
 
 prog: PROGRAMA LITSTRING INI WHILE APAR WHILE 
 ##
-## Ends in an error in state: 26.
+## Ends in an error in state: 27.
 ##
 ## expressao -> APAR . expressao FPAR [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -859,11 +859,11 @@ prog: PROGRAMA LITSTRING INI WHILE APAR WHILE
 ## APAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Caracter inválido após abrir parenteses
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING AND LITSTRING VAR 
 ##
-## Ends in an error in state: 58.
+## Ends in an error in state: 59.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -889,7 +889,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING AND LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING AND WHILE 
 ##
-## Ends in an error in state: 57.
+## Ends in an error in state: 58.
 ##
 ## expressao -> expressao AND . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -901,7 +901,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING AND WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING DIFER LITSTRING VAR 
 ##
-## Ends in an error in state: 55.
+## Ends in an error in state: 56.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -927,7 +927,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING DIFER LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING DIFER WHILE 
 ##
-## Ends in an error in state: 54.
+## Ends in an error in state: 55.
 ##
 ## expressao -> expressao DIFER . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -939,7 +939,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING DIFER WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING DIV WHILE 
 ##
-## Ends in an error in state: 34.
+## Ends in an error in state: 35.
 ##
 ## expressao -> expressao DIV . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -951,7 +951,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING DIV WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING DO RETURN LITSTRING FPROGRAMA 
 ##
-## Ends in an error in state: 111.
+## Ends in an error in state: 112.
 ##
 ## nonempty_list(comando) -> comando . [ FWHILE FSWITCH FIF FFOR ELSE CASE_DEFAULT CASE ]
 ## nonempty_list(comando) -> comando . nonempty_list(comando) [ FWHILE FSWITCH FIF FFOR ELSE CASE_DEFAULT CASE ]
@@ -963,15 +963,15 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING DO RETURN LITSTRING FPROGRAMA
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING DO RETURN LITSTRING FSWITCH 
 ##
-## Ends in an error in state: 128.
+## Ends in an error in state: 129.
 ##
 ## comando_enquanto -> WHILE expressao DO nonempty_list(comando) . FWHILE [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -982,16 +982,16 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING DO RETURN LITSTRING FSWITCH
 ## This implies that, although the LR(1) items shown above provide an
 ## accurate view of the past (what has been recognized so far), they
 ## may provide an INCOMPLETE view of the future (what was expected next).
-## In state 81, spurious reduction of production comando_return -> RETURN expressao 
-## In state 105, spurious reduction of production comando -> comando_return 
-## In state 111, spurious reduction of production nonempty_list(comando) -> comando 
+## In state 82, spurious reduction of production comando_return -> RETURN expressao 
+## In state 106, spurious reduction of production comando -> comando_return 
+## In state 112, spurious reduction of production nonempty_list(comando) -> comando 
 ##
 
 <YOUR SYNTAX ERROR MESSAGE HERE>
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING DO VIRG 
 ##
-## Ends in an error in state: 66.
+## Ends in an error in state: 67.
 ##
 ## comando_enquanto -> WHILE expressao DO . nonempty_list(comando) FWHILE [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ##
@@ -1003,7 +1003,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING DO VIRG
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING EQUALS LITSTRING VAR 
 ##
-## Ends in an error in state: 53.
+## Ends in an error in state: 54.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1029,7 +1029,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING EQUALS LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING EQUALS WHILE 
 ##
-## Ends in an error in state: 52.
+## Ends in an error in state: 53.
 ##
 ## expressao -> expressao EQUALS . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1041,7 +1041,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING EQUALS WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING GT LITSTRING VAR 
 ##
-## Ends in an error in state: 51.
+## Ends in an error in state: 52.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1067,7 +1067,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING GT LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING GT WHILE 
 ##
-## Ends in an error in state: 50.
+## Ends in an error in state: 51.
 ##
 ## expressao -> expressao GT . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1079,7 +1079,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING GT WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING GTE LITSTRING VAR 
 ##
-## Ends in an error in state: 49.
+## Ends in an error in state: 50.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1105,7 +1105,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING GTE LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING GTE WHILE 
 ##
-## Ends in an error in state: 48.
+## Ends in an error in state: 49.
 ##
 ## expressao -> expressao GTE . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1117,7 +1117,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING GTE WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING LT LITSTRING VAR 
 ##
-## Ends in an error in state: 47.
+## Ends in an error in state: 48.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1143,7 +1143,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING LT LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING LT WHILE 
 ##
-## Ends in an error in state: 46.
+## Ends in an error in state: 47.
 ##
 ## expressao -> expressao LT . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1155,7 +1155,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING LT WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING LTE LITSTRING VAR 
 ##
-## Ends in an error in state: 45.
+## Ends in an error in state: 46.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1181,7 +1181,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING LTE LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING LTE WHILE 
 ##
-## Ends in an error in state: 44.
+## Ends in an error in state: 45.
 ##
 ## expressao -> expressao LTE . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1193,7 +1193,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING LTE WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING MAIS LITSTRING VAR 
 ##
-## Ends in an error in state: 41.
+## Ends in an error in state: 42.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao MAIS expressao . [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1219,7 +1219,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING MAIS LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING MAIS WHILE 
 ##
-## Ends in an error in state: 40.
+## Ends in an error in state: 41.
 ##
 ## expressao -> expressao MAIS . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1231,7 +1231,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING MAIS WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING MENOS LITSTRING VAR 
 ##
-## Ends in an error in state: 39.
+## Ends in an error in state: 40.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1257,7 +1257,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING MENOS LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING MENOS WHILE 
 ##
-## Ends in an error in state: 38.
+## Ends in an error in state: 39.
 ##
 ## expressao -> expressao MENOS . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1269,7 +1269,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING MENOS WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING MULTI WHILE 
 ##
-## Ends in an error in state: 31.
+## Ends in an error in state: 32.
 ##
 ## expressao -> expressao MULTI . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1281,7 +1281,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING MULTI WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING OR LITSTRING VAR 
 ##
-## Ends in an error in state: 43.
+## Ends in an error in state: 44.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1307,7 +1307,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING OR LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING OR WHILE 
 ##
-## Ends in an error in state: 42.
+## Ends in an error in state: 43.
 ##
 ## expressao -> expressao OR . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1319,7 +1319,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING OR WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING POTEN LITSTRING VAR 
 ##
-## Ends in an error in state: 37.
+## Ends in an error in state: 38.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1345,7 +1345,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING POTEN LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING POTEN WHILE 
 ##
-## Ends in an error in state: 36.
+## Ends in an error in state: 37.
 ##
 ## expressao -> expressao POTEN . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1357,7 +1357,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING POTEN WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING RESTO LITSTRING VAR 
 ##
-## Ends in an error in state: 30.
+## Ends in an error in state: 31.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1383,7 +1383,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING RESTO LITSTRING VAR
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING RESTO WHILE 
 ##
-## Ends in an error in state: 29.
+## Ends in an error in state: 30.
 ##
 ## expressao -> expressao RESTO . expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ##
@@ -1395,7 +1395,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING RESTO WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE LITSTRING WHILE 
 ##
-## Ends in an error in state: 65.
+## Ends in an error in state: 66.
 ##
 ## comando_enquanto -> WHILE expressao . DO nonempty_list(comando) FWHILE [ WHILE SWITCH SAIDA_LINHA SAIDA RETURN IF ID FWHILE FSWITCH FPROGRAMA FOR FIF FFUNCTION FFOR ENTRADA ELSE CASE_DEFAULT CASE ]
 ## expressao -> expressao . MAIS expressao [ RESTO POTEN OR MULTI MENOS MAIS LTE LT GTE GT EQUALS DO DIV DIFER AND ]
@@ -1421,7 +1421,7 @@ prog: PROGRAMA LITSTRING INI WHILE LITSTRING WHILE
 
 prog: PROGRAMA LITSTRING INI WHILE MENOS LITSTRING VAR 
 ##
-## Ends in an error in state: 64.
+## Ends in an error in state: 65.
 ##
 ## expressao -> expressao . MAIS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
 ## expressao -> expressao . MENOS expressao [ WHILE VIRG SWITCH SAIDA_LINHA SAIDA RETURN RESTO POTEN OR MULTI MENOS MAIS LTE LT IF ID GTE GT FWHILE FSWITCH FPROGRAMA FPAR FOR FIF FFUNCTION FFOR EQUALS ENTRADA ENTAO END ELSE DO DIV DIFER CASE_DEFAULT CASE AND ]
@@ -1487,7 +1487,7 @@ prog: PROGRAMA LITSTRING VAR ID DEF BOOL FPAR
 ## In state 16, spurious reduction of production declaracao -> VAR list(variaveis) 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Algoritmo não iniciado
 
 prog: PROGRAMA LITSTRING VAR ID DEF BOOL WHILE 
 ##
@@ -1499,7 +1499,7 @@ prog: PROGRAMA LITSTRING VAR ID DEF BOOL WHILE
 ## variaveis 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Comando inválido na declação de variaveis
 
 prog: PROGRAMA LITSTRING VAR ID DEF WHILE 
 ##
@@ -1511,7 +1511,7 @@ prog: PROGRAMA LITSTRING VAR ID DEF WHILE
 ## separated_nonempty_list(VIRG,ID) DEF 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Esperado o tipo da variavel.
 
 prog: PROGRAMA LITSTRING VAR ID VIRG WHILE 
 ##
@@ -1523,7 +1523,7 @@ prog: PROGRAMA LITSTRING VAR ID VIRG WHILE
 ## ID VIRG 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Esperado outra nome de variável.
 
 prog: PROGRAMA LITSTRING VAR ID WHILE 
 ##
@@ -1536,7 +1536,7 @@ prog: PROGRAMA LITSTRING VAR ID WHILE
 ## ID 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Caracter não esperado, esperado virgula e nome de outra variável ou :
 
 prog: PROGRAMA LITSTRING VAR WHILE 
 ##
@@ -1548,7 +1548,7 @@ prog: PROGRAMA LITSTRING VAR WHILE
 ## VAR 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Comando inválido dentro do escopo da declação de variável
 
 prog: PROGRAMA LITSTRING WHILE 
 ##
@@ -1560,7 +1560,7 @@ prog: PROGRAMA LITSTRING WHILE
 ## PROGRAMA LITSTRING 
 ##
 
-<YOUR SYNTAX ERROR MESSAGE HERE>
+Declaração não aberta, ou comando fora de um escopo.
 
 prog: PROGRAMA WHILE 
 ##

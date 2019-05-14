@@ -6,7 +6,7 @@
 %token <string> LITSTRING
 %token <char> LITCHAR
 %token <string> ID
-/* %token <bool> LITBOOL */
+%token <bool> LITBOOL
 %token FUNCTION FFUNCTION
 %token PROGRAMA FPROGRAMA INI
 %token MAIS MENOS MULTI DIV
@@ -160,6 +160,7 @@ expressao:
         | i=LITINT      { ExpInt i    }
         | s=LITSTRING   { ExpString s }
         | c=LITCHAR     { ExpChar c }
+        | b=LITBOOL     { ExpBool b }
         | e1=expressao op=oper e2=expressao { ExpOp (op, e1, e2) }
         | APAR e=expressao FPAR { e }
         | MENOS e=expressao { ExpNegativo(e) }
