@@ -36,7 +36,6 @@ and variaveis = variavel list
 and variavel = VarSimples of ident pos
 
 and 'expr funcao = Funcao of ('expr decFuncao)
-(* (ident pos) * (ident pos) * tipo * declaracoes * declaracoes * ('expr comandos) *)
 
 and 'expr decFuncao = {
   fn_nome:        ident pos;

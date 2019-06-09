@@ -8,4 +8,3 @@ type expressao = ExpVar of variavel * tipo
             | ExpReal of float * tipo
             | ExpFuncao of ident * (expressao expressoes) * tipo
             | ExpOp of (oper * tipo) * (expressao * tipo) * (expressao * tipo)
-            (* | ExpNegativo of (expressao * tipo) *)

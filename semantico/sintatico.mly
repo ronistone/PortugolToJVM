@@ -169,7 +169,6 @@ expressao:
         | r=LITREAL     { ExpReal r }
         | e1=expressao op=oper e2=expressao { ExpOp (op, e1, e2) }
         | APAR e=expressao FPAR { e }
-        /* | pos=MENOS e=expressao { (ExpNegativo(e), pos) } */
 
 %inline oper:
 	| pos = MAIS  { (Mais, pos)  }

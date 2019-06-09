@@ -1912,7 +1912,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 175 "sintatico.mly"
+# 174 "sintatico.mly"
                ( (Mais, pos)  )
 # 1918 "sintatico.ml"
           
@@ -1961,7 +1961,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 176 "sintatico.mly"
+# 175 "sintatico.mly"
                 ( (Menos, pos) )
 # 1967 "sintatico.ml"
           
@@ -2010,7 +2010,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 177 "sintatico.mly"
+# 176 "sintatico.mly"
                  ( (Mult, pos)  )
 # 2016 "sintatico.ml"
           
@@ -2059,7 +2059,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 178 "sintatico.mly"
+# 177 "sintatico.mly"
                 ( (Div, pos)   )
 # 2065 "sintatico.ml"
           
@@ -2108,7 +2108,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 179 "sintatico.mly"
+# 178 "sintatico.mly"
                 ( (Resto, pos) )
 # 2114 "sintatico.ml"
           
@@ -2157,7 +2157,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 180 "sintatico.mly"
+# 179 "sintatico.mly"
                 ( (Potencia, pos) )
 # 2163 "sintatico.ml"
           
@@ -2206,7 +2206,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 181 "sintatico.mly"
+# 180 "sintatico.mly"
              ( (Menor, pos) )
 # 2212 "sintatico.ml"
           
@@ -2255,7 +2255,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 182 "sintatico.mly"
+# 181 "sintatico.mly"
              ( (Maior, pos) )
 # 2261 "sintatico.ml"
           
@@ -2304,7 +2304,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 183 "sintatico.mly"
+# 182 "sintatico.mly"
               ( (MenorIgual, pos) )
 # 2310 "sintatico.ml"
           
@@ -2353,7 +2353,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 184 "sintatico.mly"
+# 183 "sintatico.mly"
               ( (MaioIgual, pos) )
 # 2359 "sintatico.ml"
           
@@ -2402,7 +2402,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 185 "sintatico.mly"
+# 184 "sintatico.mly"
                  ( (Igual, pos) )
 # 2408 "sintatico.ml"
           
@@ -2451,7 +2451,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 186 "sintatico.mly"
+# 185 "sintatico.mly"
                 ( (Difer, pos) )
 # 2457 "sintatico.ml"
           
@@ -2500,7 +2500,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 187 "sintatico.mly"
+# 186 "sintatico.mly"
                ( (E, pos)     )
 # 2506 "sintatico.ml"
           
@@ -2549,7 +2549,7 @@ module Tables = struct
         let _v : (Sast.expressao) = let op =
           let pos = pos0 in
           
-# 188 "sintatico.mly"
+# 187 "sintatico.mly"
              ( (Ou, pos)    )
 # 2555 "sintatico.ml"
           
@@ -3380,7 +3380,7 @@ module Tables = struct
         let _startpos = _startpos_x_ in
         let _endpos = _endpos_x_ in
         let _v : (Ast.variavel) = 
-# 192 "sintatico.mly"
+# 191 "sintatico.mly"
                      ( VarSimples x )
 # 3386 "sintatico.ml"
          in

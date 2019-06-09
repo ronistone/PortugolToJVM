@@ -27,19 +27,19 @@ type classe_op = Aritmetico | Relacional | Logico | Cadeia
 let classifica op =
   let open A in
   match op with
-    Mais -> Aritmetico
-  | Menos -> Aritmetico
-  | Mult -> Aritmetico
-  | Div -> Aritmetico
-  | Resto -> Aritmetico
+    Mais
+  | Menos
+  | Mult
+  | Div
+  | Resto
   | Potencia -> Aritmetico
-  | Menor -> Relacional
-  | Igual -> Relacional
-  | Difer -> Relacional
-  | Maior -> Relacional
-  | MaioIgual -> Relacional
+  | Menor
+  | Igual
+  | Difer
+  | Maior
+  | MaioIgual
   | MenorIgual -> Relacional
-  | E   ->  Logico
+  | E
   | Ou  ->  Logico
   | Concat  -> Cadeia
 
@@ -108,18 +108,6 @@ let rec infere_exp amb exp =
        (* encontrar o escopo global. Se em algum lugar for encontrado,         *)
        (* devolve-se a definição. Em caso contrário, devolve uma exceção       *)
        let id = fst nome in busca_por_id nome amb id
-       (* let id = fst nome in
-         (try (match (Amb.busca amb id) with
-               | Amb.EntVar tipo -> (T.ExpVar (A.VarSimples nome, tipo), tipo)
-               | Amb.EntFun _ ->
-                 let msg = "nome de funcao usado como nome de variavel: " ^ id in
-                  failwith (msg_erro nome msg)
-             )
-          with Not_found ->
-                 let msg = "A variavel " ^ id ^ " nao foi declarada" in
-                 failwith (msg_erro nome msg)
-         ) *)
-     (* | _ -> failwith "infere_exp: não implementado" *)
     )
   | S.ExpOp (op, esq, dir) ->
     let (esq, tesq) = infere_exp amb esq
@@ -127,17 +115,12 @@ let rec infere_exp amb exp =
 
     let verifica_aritmetico () =
       (match tesq with
-         A.TipoInt ->
+         A.TipoInt
+       | A.TipoReal ->
          let _ = mesmo_tipo (snd op)
                       "O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
                       tesq tdir
          in tesq (* O tipo da expressão aritmética como um todo *)
-        | A.TipoReal ->
-          let _ = mesmo_tipo (snd op)
-                      "O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
-                      tesq tdir
-         in tesq (* O tipo da expressão aritmética como um todo *)
-
        | t -> let msg = "um operador aritmetico nao pode ser usado com o tipo " ^
                         (nome_tipo t)
          in failwith (msg_erro_pos (snd op) msg)
@@ -146,6 +129,7 @@ let rec infere_exp amb exp =
     and verifica_relacional () =
       (match tesq with
          A.TipoInt
+       | A.TipoReal
        | A.TipoString ->
          let _ = mesmo_tipo (snd op)
                    "O operando esquerdo eh do tipo %s mas o direito eh do tipo %s"
@@ -336,7 +320,16 @@ let rec verifica_cmd amb tiporet cmd =
         let cases1 = List.map (verifica_case) cases in
 
         CmdSwitch( variavel1, cases1, default1 )
-  | _ -> failwith "Comando não implementado ainda!"
+  | CmdEnquanto (teste, entao) ->
+    let (teste1,tinf) = infere_exp amb teste in
+    (* O tipo inferido para a expressão 'teste' do condicional deve ser booleano *)
+    let _ = mesmo_tipo (posicao teste)
+             "O teste do enquanto deveria ser do tipo %s e nao %s"
+             TipoBool tinf in
+    (* Verifica a validade de cada comando do bloco 'então' *)
+    let entao1 = List.map (verifica_cmd amb tiporet) entao in
+     CmdEnquanto (teste1, entao1)
+  (* | _ -> failwith "Comando não implementado ainda!" *)
 and verifica_fun amb ast =
   let open A in
   match ast with
