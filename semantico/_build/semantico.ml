@@ -335,6 +335,9 @@ and verifica_fun amb ast =
   match ast with
     A.Funcao {fn_nome; fn_nome_fecha;fn_tiporet; fn_formais; fn_locais; fn_corpo} ->
     (* Estende o ambiente global, adicionando um ambiente local *)
+    let _ = if (fst fn_nome) <> (fst fn_nome_fecha)
+            then let msg = "nome de funcao deve ser utilizada no fechamento da funcao: " ^ (fst fn_nome) in
+            failwith (msg_erro fn_nome msg) in
     let ambfn = Amb.novo_escopo amb in
     (* Insere os parâmetros no novo ambiente *)
     let insere_parametro (v,t) = Amb.insere_param ambfn (fst v) t in
