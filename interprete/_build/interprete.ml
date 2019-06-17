@@ -10,14 +10,12 @@ let obtem_nome_tipo_var exp = let open T in
   | ExpVar (v,tipo) ->
     (match v with
       | A.VarSimples (nome,_) -> (nome,tipo)
-      | _ -> failwith "obtem_nome_tipo_var: nao implementado"
     )
   | _ -> failwith "obtem_nome_tipo_var: nao eh variavel"
 
 let pega_nome_var var = let open A in
   match var with
     | VarSimples (nome,_) -> nome
-    | _ -> failwith "pega_nome_var: varSimples"
 
 let pega_int exp =
   match exp with
@@ -133,7 +131,7 @@ let rec interpreta_exp amb exp =
         | Maior  -> ExpBool (pega_string vesq > pega_string vdir, top)
         | MenorIgual -> ExpBool (pega_string vesq <= pega_string vdir, top)
         | MaioIgual  -> ExpBool (pega_string vesq >= pega_string vdir, top)
-        | Igual   -> ExpBool (pega_string vesq == pega_string vdir, top)
+        | Igual   -> ExpBool (pega_string vesq = pega_string vdir, top)
         | Difer   -> ExpBool (pega_string vesq != pega_string vdir, top)
         | _ -> failwith "interpreta_relacional"
         )
@@ -247,7 +245,7 @@ and interpreta_cmd amb cmd =
          | A.TipoReal ->   T.ExpReal   (read_float (), tipo)
          | _ -> failwith "leia_var: nao implementado"
         )
-      in  Amb.atualiza_var amb nome tipo (Some valor)
+      in Amb.atualiza_var amb nome tipo (Some valor)
     in
     (* Lê o valor para cada argumento e atualiza o ambiente *)
     List.iter leia_var nts

@@ -23,7 +23,7 @@ let novo_escopo amb = { ambv = Tab.novo_escopo amb.ambv }
 
 let busca amb ch = Tab.busca amb.ambv ch
 
-let atualiza_var amb ch t v =
+let atualiza_var amb ch t v = 
   Tab.atualiza amb.ambv ch (EntVar (t,v))
 
 let insere_local amb nome t v =
