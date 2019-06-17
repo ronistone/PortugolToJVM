@@ -1,0 +1,67 @@
+### Starting build.
+# Target: interpreteTest.ml.depends, tags: { package(menhirLib), extension:ml, file:interpreteTest.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules interpreteTest.ml > interpreteTest.ml.depends # cached
+# Target: ast.ml.depends, tags: { package(menhirLib), extension:ml, file:ast.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules ast.ml > ast.ml.depends # cached
+# Target: ast.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:ast.cmo, file:ast.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o ast.cmo ast.ml # cached
+# Target: erroSint.ml.depends, tags: { package(menhirLib), extension:ml, file:erroSint.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules erroSint.ml > erroSint.ml.depends # cached
+# Target: erroSint.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:erroSint.cmo, file:erroSint.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o erroSint.cmo erroSint.ml # cached
+# Target: interprete.mli.depends, tags: { package(menhirLib), extension:mli, file:interprete.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules interprete.mli > interprete.mli.depends # cached
+# Target: tast.ml.depends, tags: { package(menhirLib), extension:ml, file:tast.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules tast.ml > tast.ml.depends # cached
+# Target: tast.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:tast.cmo, file:tast.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o tast.cmo tast.ml # cached
+# Target: interprete.cmi, tags: { package(menhirLib), byte, compile, extension:mli, file:interprete.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o interprete.cmi interprete.mli # cached
+# Target: lexico.mll, tags: { package(menhirLib), extension:mll, file:lexico.mll, lexer, ocaml, ocamllex, quiet, traverse }
+/home/roni/.opam/4.05.0/bin/ocamllex.opt -q lexico.mll # cached
+# Target: lexico.ml.depends, tags: { package(menhirLib), extension:ml, file:lexico.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules lexico.ml > lexico.ml.depends # cached
+# Target: sintatico.mly.depends, tags: { package(menhirLib), extension:mly, file:sintatico.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, traverse }
+menhir --table --raw-depend --ocamldep 'ocamlfind ocamldep -modules' sintatico.mly > sintatico.mly.depends # cached
+# Target: sast.ml.depends, tags: { package(menhirLib), extension:ml, file:sast.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules sast.ml > sast.ml.depends # cached
+# Target: sast.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:sast.cmo, file:sast.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o sast.cmo sast.ml # cached
+# Target: sintatico.mly, tags: { package(menhirLib), byte, compile, extension:ml, extension:mly, file:sintatico.ml, file:sintatico.mly, infer, menhir, ocaml, parser, quiet, traverse }
+menhir --table --ocamlc 'ocamlfind ocamlc -package menhirLib' --infer sintatico.mly # cached
+# Target: sintatico.mli.depends, tags: { package(menhirLib), extension:mli, file:sintatico.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules sintatico.mli > sintatico.mli.depends # cached
+# Target: sintatico.cmi, tags: { package(menhirLib), byte, compile, extension:mli, file:sintatico.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o sintatico.cmi sintatico.mli # cached
+# Target: lexico.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:lexico.cmo, file:lexico.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o lexico.cmo lexico.ml # cached
+# Target: semantico.mli.depends, tags: { package(menhirLib), extension:mli, file:semantico.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules semantico.mli > semantico.mli.depends # cached
+# Target: ambiente.mli.depends, tags: { package(menhirLib), extension:mli, file:ambiente.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules ambiente.mli > ambiente.mli.depends # cached
+# Target: ambiente.cmi, tags: { package(menhirLib), byte, compile, extension:mli, file:ambiente.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o ambiente.cmi ambiente.mli # cached
+# Target: semantico.cmi, tags: { package(menhirLib), byte, compile, extension:mli, file:semantico.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o semantico.cmi semantico.mli # cached
+# Target: interpreteTest.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:interpreteTest.cmo, file:interpreteTest.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o interpreteTest.cmo interpreteTest.ml # cached
+# Target: interprete.ml.depends, tags: { package(menhirLib), extension:ml, file:interprete.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules interprete.ml > interprete.ml.depends
+# Target: ambInterp.mli.depends, tags: { package(menhirLib), extension:mli, file:ambInterp.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules ambInterp.mli > ambInterp.mli.depends # cached
+# Target: ambInterp.cmi, tags: { package(menhirLib), byte, compile, extension:mli, file:ambInterp.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o ambInterp.cmi ambInterp.mli # cached
+# Target: semantico.ml.depends, tags: { package(menhirLib), extension:ml, file:semantico.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules semantico.ml > semantico.ml.depends # cached
+# Target: sintatico.ml.depends, tags: { package(menhirLib), extension:ml, file:sintatico.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package menhirLib -modules sintatico.ml > sintatico.ml.depends # cached
+# Target: sintatico.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:sintatico.cmo, file:sintatico.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o sintatico.cmo sintatico.ml # cached
+# Target: interprete.cmo, tags: { package(menhirLib), byte, compile, extension:cmo, extension:ml, file:interprete.cmo, file:interprete.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -package menhirLib -o interprete.cmo interprete.ml
++ ocamlfind ocamlc -c -package menhirLib -o interprete.cmo interprete.ml
+File "interprete.ml", line 225, characters 43-47:
+Error: This expression has type A.variavel = Ast.variavel
+       but an expression was expected of type T.expressao = Tast.expressao
+Command exited with code 2.
+# Compilation unsuccessful.
