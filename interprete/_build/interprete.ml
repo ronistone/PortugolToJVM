@@ -14,6 +14,11 @@ let obtem_nome_tipo_var exp = let open T in
     )
   | _ -> failwith "obtem_nome_tipo_var: nao eh variavel"
 
+let pega_nome_var var = let open A in
+  match var with
+    | VarSimples (nome,_) -> nome
+    | _ -> failwith "pega_nome_var: varSimples"
+
 let pega_int exp =
   match exp with
   |  T.ExpInt (i,_) -> i
@@ -220,10 +225,14 @@ and interpreta_cmd amb cmd =
 
   | CmdAtrib (elem, exp) ->
     (* Interpreta o lado direito da atribuição *)
-    let exp = interpreta_exp amb exp
+    let exp = interpreta_exp amb exp in
     (* Faz o mesmo para o lado esquerdo *)
-    and (elem1,tipo) = obtem_nome_tipo_var elem in
-    Amb.atualiza_var amb elem1 tipo (Some exp)
+    let name = (pega_nome_var elem)
+    in (match (Amb.busca amb name) with
+          | Amb.EntVar (tipo, v) -> 
+            Amb.atualiza_var amb name tipo (Some exp)
+          |  _ -> failwith "cmd_atrib: EntVar"
+        )
 
   | CmdChamada exp -> ignore( interpreta_exp amb exp)
   
@@ -277,25 +286,25 @@ and interpreta_cmd amb cmd =
   | CmdFor( variavel, inicio, fim, comandos ) ->
       ( match inicio with
           | ExpInt _ ->
-              let vfim = interpreta_exp amb fim
-              and vinicio = interpreta_exp amb inicio in
+              let vfim = pega_int (interpreta_exp amb fim)
+              and vinicio = pega_int (interpreta_exp amb inicio) in
                 let incremento = if vfim > vinicio 
                                     then 1
                                  else (-1)
                 in
               let rec para atual cmds = 
-                if atual <> fim 
+                if atual <> (pega_int fim)
                   then let _ = List.iter (interpreta_cmd amb) cmds in
                         para (atual + incremento) cmds
               in para vinicio comandos
           | ExpReal _ ->
-              let vfim = interpreta_exp amb fim
-              and vinicio = interpreta_exp amb inicio in
+              let vfim = pega_real (interpreta_exp amb fim)
+              and vinicio = pega_real (interpreta_exp amb inicio) in
                 let incremento = if vfim > vinicio then 1.
                                 else -1.
                 in
               let rec para atual cmds = 
-                if atual <> fim 
+                if atual <> pega_real(fim)
                   then let _ = List.iter (interpreta_cmd amb) cmds in
                         para (atual +. incremento) cmds
               in para vinicio comandos
@@ -313,7 +322,7 @@ and interpreta_cmd amb cmd =
                 else verifica_cases v cs
           )
       in
-      let (id,tipo) = obtem_nome_tipo_var exp in
+      let id = pega_nome_var variavel in
       (match (Amb.busca amb id) with
         | Amb.EntVar (tipo, v) ->
           (match v with
@@ -321,7 +330,8 @@ and interpreta_cmd amb cmd =
             | Some valor -> if not (verifica_cases valor cases)
                 then  (
                         match default with
-                          | CmdCaseDefault cmds -> List.iter (interpreta_cmd amb) cmds
+                          | Some CmdCaseDefault cmds -> List.iter (interpreta_cmd amb) cmds
+                          | _ -> failwith "Switch: CaseDefault"
                       )
           )
         |  _ -> failwith "interpreta_exp: expvar"
@@ -337,22 +347,25 @@ and interpreta_cmd amb cmd =
               | _ -> ()
           )
       in laco entao
-and interpreta_fun amb ast =
+and interpreta_fun amb fn_nome fn_formais fn_locais fn_corpo =
   let open A in
-  match ast with
-    A.Funcao {fn_nome; fn_nome_fecha;fn_tiporet; fn_formais; fn_locais; fn_corpo} ->
-    (* Estende o ambiente global, adicionando um ambiente local *)
-    let ambfn = Amb.novo_escopo amb in
-    (* Insere os parâmetros no novo ambiente *)
-    let insere_parametro (v,t) = Amb.insere_param ambfn (fst v) t in
-    let _ = List.iter insere_parametro fn_formais in
-    (* Insere as variáveis locais no novo ambiente *)
-    let insere_local = function
-        (v,t) -> Amb.insere_local ambfn (fst v)  t in
+ (* Estende o ambiente global, adicionando um ambiente local *)
+  let ambfn = Amb.novo_escopo amb in
+   let insere_local  d =
+    match d with
+      (v,t) -> Amb.insere_local ambfn v  t None
+  in
+  (* Associa os argumentos aos parâmetros e insere no novo ambiente *)
+  let insere_parametro (n,t,v) = Amb.insere_param ambfn n t v in
+  let _ = List.iter insere_parametro fn_formais in
+  (* Insere as variáveis locais no novo ambiente *)
     let _ = List.iter insere_local fn_locais in
-    (* Verifica cada comando presente no corpfn_formaiso da função usando o novo ambiente *)
-    let corpo_tipado = List.map (interpreta_cmd ambfn fn_tiporet) fn_corpo in
-      A.Funcao {fn_nome; fn_nome_fecha; fn_tiporet; fn_formais; fn_locais; fn_corpo = corpo_tipado}
+    (* Interpreta cada comando presente no corpo da função usando o novo
+       ambiente *)
+  try
+    let _ = List.iter (interpreta_cmd ambfn) fn_corpo in T.ExpVoid
+    with
+       Valor_de_retorno expret -> expret
 
 
 let rec obtem_formais xs =
@@ -363,7 +376,7 @@ let rec obtem_formais xs =
     if (List.for_all (fun (n,t) -> (fst n) <> id) xs)
     then (id, t) :: obtem_formais xs
     else let msg = "Parametro duplicado " ^ id in
-      failwith (msg_erro nome msg)
+      failwith msg
 
 let insere_declaracao_var amb dec =
   let open A in
@@ -373,11 +386,15 @@ let insere_declaracao_var amb dec =
 let insere_declaracao_fun amb dec =
   let open A in
     match dec with
-    Funcao {fn_nome; fn_tiporet; fn_formais; fn_locais; fn_corpo} ->
-        (* Verifica se não há parâmetros duplicados *)
-        let formais = obtem_formais fn_formais in
+    Funcao {fn_nome; fn_nome_fecha; fn_tiporet; fn_formais; fn_locais; fn_corpo} ->
         let nome = fst fn_nome in
-        Amb.insere_fun amb nome formais fn_locais fn_tiporet fn_corpo
+        let formais = List.map (fun (n,t) -> ((fst n), t)) fn_formais in
+        let locais = List.map (fun (n,t) -> ((fst n), t)) fn_locais in
+        Amb.insere_fun amb nome 
+        formais 
+        locais 
+        fn_tiporet 
+        fn_corpo
 
 
 (* Lista de cabeçalhos das funções pré definidas *)

@@ -1,7 +1,7 @@
 type entrada_fn = {
   tipo_fn:  Ast.tipo;
   formais: (string * Ast.tipo) list;
-  locais:  Ast.declaracoes;
+  locais:  (string * Ast.tipo) list;
   corpo: Tast.expressao Ast.comandos
 }
 
@@ -20,5 +20,5 @@ val insere_param : t -> string -> Ast.tipo -> (Tast.expressao option) -> unit
 val insere_fun :  t ->
   string ->
   (string * Ast.tipo) list ->
-   Ast.declaracoes ->
+  (string * Ast.tipo) list ->
   Ast.tipo -> (Tast.expressao Ast.comandos) -> unit
