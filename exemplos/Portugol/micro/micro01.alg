@@ -14,6 +14,6 @@ início
     escreva(" Tabela de conversão: Celsius -> Fahrenheit")
     escreva("Digite a temperatura em Celsius: ")
     leia(cel)
-    far <- (9*cel+160)/5
+    far <- (9.0*cel+160.0)/5.0
     escreva("A nova temperatura é: ",far," F")
 fim_algoritmo

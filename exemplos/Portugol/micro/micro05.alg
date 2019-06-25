@@ -8,15 +8,17 @@ var
     nome, sexo: caractere
     x, h, m: inteiro
 início
+    h <- 0
+    m <- 0
     para x de 1 até 5 faça
         escreva("Digite o nome: ")
         leia(nome)
         escreva("H - Homem ou M - Mulher: ")
         leia(sexo)
         escolha sexo
-            caso 'H'
+            caso "H"
                 h <- h + 1
-            caso 'M'
+            caso "M"
                 m <- m + 1
             outrocaso
                 escreva("Sexo só pode ser H ou M!")

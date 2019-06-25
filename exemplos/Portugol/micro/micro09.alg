@@ -6,13 +6,13 @@ início
     leia(preco)
     escreva("Digite a venda: ")
     leia(venda)
-    se (venda < 500) OU (preco < 30)
-    então novo_preco <- preco + 10/100 * preco
-    senão se (vendas >= 500 E venda < 1200) ou
-             (preco >= 30 e preco < 80)
-        então novo_preco <- preco + 15/100 * preco
-        senão se venda >= 1200 ou preco >= 80
-            então novo_preco <- preco - 20/100 * preco
+    se (venda < 500.0) OU (preco < 30.0)
+    então novo_preco <- preco + 10.0/100.0 * preco
+    senão se (venda >= 500.0 E venda < 1200.0) ou
+             (preco >= 30.0 e preco < 80.0)
+        então novo_preco <- preco + 15.0/100.0 * preco
+        senão se venda >= 1200.0 ou preco >= 80.0
+            então novo_preco <- preco - 20.0/100.0 * preco
             fim_se
         fim_se
     fim_se

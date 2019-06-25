@@ -6,6 +6,7 @@ algoritmo "micro04"
 var
     x, num, intervalo: inteiro
 início
+    intervalo <- 0
     para x de 1 até 5 faça
         escreva("Digite um número: ")
         leia(num)

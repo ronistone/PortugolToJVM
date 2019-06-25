@@ -29,7 +29,7 @@ função verifica(n: inteiro) : inteiro
         se n > 0 então
             res <- 1
         senão se n < 0
-            então res <- -1
+            então res <- 0-1
             senão res <- 0
             fim_se
         fim_se

@@ -1,6 +1,7 @@
 algoritmo "nano04"
 var
-	n : inteiro
+	n,x : inteiro
 início
 	n <- 1 + 2
+	x <- n
 fim_algoritmo
